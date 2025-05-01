@@ -10,7 +10,10 @@ function Header() {
         {/* Left Section of the Header */}
         <div className="header-left ">
           <img src={logo} alt="company logo"></img>
-          <div className="header-title">Barma Sorig Healing Center</div>
+          <div className="header-title">
+            Barma Sorig <br /> Healing Center <br />
+            {/* Company Name in Dzongkha - །། །བར་མ་གསོ་རིག་ལྟེ་བ།། */}
+          </div>
         </div>
 
         {/* Right section of the Header */}

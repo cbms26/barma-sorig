@@ -18,27 +18,38 @@ header .container {
 .header-left {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
 header img {
-    height: 10vmin;
+    /* Responsive logo using clamp() */
+    /* previous css - height: 10vmin;*/
+    height: clamp(40px, 8vmin, 70px);
+
     pointer-events: none;
 }
 
 .header-title {
-    font-size: 1.4rem;
+    /* Responsive Font Scaling */
+    font-size: clamp(1rem, 2vw, 1.4rem);
+
     font-weight: 500;
 }
 
 .header-nav {
     display: flex;
-    gap: 2.2rem;
+
+    /* Responsive Nav Spacing using clamp */
+    /* previous css - gap: 2.2rem;*/
+    gap: clamp(1rem, 3vw, 2.2rem);
 }
 
 .header-nav-list {
     display: flex;
-    gap: 1rem;
+
+    /* Responsive Nav list Spacing using clamp */
+    /* previous css - gap: 2.2rem;*/
+    gap: clamp(0.6rem, 2vw, 1rem);
 }
 
 .header-nav-item>a {
@@ -52,6 +63,10 @@ header img {
 
 .btn-appointment {
     padding: 0.6rem 1.2rem;
+
+    /* Responsive Font Scaling */
+    font-size: clamp(0.9rem, 2vw, 1rem);
+
     background-color: midnightblue;
     color: #fff;
     border-radius: 6px;
