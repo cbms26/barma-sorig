@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/cbms26/barma-sorig.git/static/css/main.26a0b5c5.css",
+    "main.js": "/cbms26/barma-sorig.git/static/js/main.32311126.js",
+    "static/js/453.59619da6.chunk.js": "/cbms26/barma-sorig.git/static/js/453.59619da6.chunk.js",
+    "static/media/barma-sorig-ad.mp4": "/cbms26/barma-sorig.git/static/media/barma-sorig-ad.4f6e049a2ecc18220aea.mp4",
+    "static/media/hero-bg.webp": "/cbms26/barma-sorig.git/static/media/hero-bg.45a505c8565627785864.webp",
+    "static/media/logo.png": "/cbms26/barma-sorig.git/static/media/logo.5bd7129e03419fcba9a8.png",
+    "static/media/service-item-1.webp": "/cbms26/barma-sorig.git/static/media/service-item-1.a1e46e52ed577fa39dc7.webp",
+    "static/media/service-item-3.jpg": "/cbms26/barma-sorig.git/static/media/service-item-3.456df88aea44aac0ed82.jpg",
+    "static/media/service-item-2.jpg": "/cbms26/barma-sorig.git/static/media/service-item-2.8e8eac618612aa338af3.jpg",
+    "static/media/slick.svg": "/cbms26/barma-sorig.git/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/cbms26/barma-sorig.git/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/cbms26/barma-sorig.git/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/cbms26/barma-sorig.git/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/cbms26/barma-sorig.git/index.html",
+    "main.26a0b5c5.css.map": "/cbms26/barma-sorig.git/static/css/main.26a0b5c5.css.map",
+    "main.32311126.js.map": "/cbms26/barma-sorig.git/static/js/main.32311126.js.map",
+    "453.59619da6.chunk.js.map": "/cbms26/barma-sorig.git/static/js/453.59619da6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.26a0b5c5.css",
+    "static/js/main.32311126.js"
+  ]
+}
