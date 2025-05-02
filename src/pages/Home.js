@@ -91,18 +91,35 @@ function Home() {
       {/* About Section*/}
       <section className="about-section">
         <div className="about-container container">
+          {/* AutoPlay video with mute setting */}
           <div className="about-video">
-            <video src={aboutUsVideo} autoPlay muted loop playsInline></video>
-            <p className="video-caption">
-              🎥 Watch a glimpse of our healing rituals
-            </p>
+            <video
+              id="aboutVideo"
+              src={aboutUsVideo}
+              playsInline
+              loop
+              style={{ width: "100%", cursor: "pointer" }}
+              onClick={(e) => {
+                const video = e.target;
+                if (video.paused) {
+                  video.muted = false; // 🔊 Turn sound on when playing
+                  video.play();
+                } else {
+                  video.pause();
+                }
+              }}
+            ></video>
+            <p className="video-caption">🎥 Click to play or pause</p>
           </div>
+
           {/* Switch to Click To Watch Setting for the Video 
-            <div className="about-video">
-              <video src={aboutVideo} controls poster={videoThumbnail}></video>
-              <p className="video-caption">▶ Click to watch how Barma-Sorig heals with nature</p>
-            </div>
-          */}
+          <div className="about-video">
+            <video src={aboutVideo} controls poster={videoThumbnail}></video>
+            <p className="video-caption">
+              ▶ Click to watch how Barma-Sorig heals with nature
+            </p>
+          </div> */}
+
           <div className="about-content">
             <h2>About Barma-Sorig</h2>
             <p>
@@ -156,19 +173,19 @@ function Home() {
                   session. The herbs, the energy, and the kindness — it's all
                   real.”
                 </blockquote>
-                <cite>- Sonam Dema</cite>
+                <cite>- Metho Selden</cite>
               </div>
               <div className="testimonial-slide">
                 <blockquote>
                   “Truly a healing experience. The herbal massage is magical.”
                 </blockquote>
-                <cite>- Karma Wangmo</cite>
+                <cite>- Ngawang Tenzin</cite>
               </div>
               <div className="testimonial-slide">
                 <blockquote>
                   “Barma-Sorig brings ancient wisdom into modern lives.”
                 </blockquote>
-                <cite>- Pema Dorji</cite>
+                <cite>- Sonam Choden</cite>
               </div>
             </Slider>
           </div>

@@ -10,6 +10,7 @@ header {
 }
 
 header .container {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -97,6 +98,8 @@ header img {
     border-radius: 2px;
 }
 
+
+
 /* Responsive Behavior */
 @media screen and (max-width: 768px) {
     .header-nav {
@@ -110,6 +113,7 @@ header img {
         display: none;
         padding: 1rem 0;
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        z-index: 999;
     }
 
     .header-nav.open {
