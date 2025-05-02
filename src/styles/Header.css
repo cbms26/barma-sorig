@@ -78,3 +78,58 @@ header img {
 .btn-appointment:hover {
     background-color: #d41515;
 }
+
+/* Hmaburger Menu for Mobile View Screen */
+/* Hamburger Button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    border-radius: 2px;
+}
+
+/* Responsive Behavior */
+@media screen and (max-width: 768px) {
+    .header-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 1rem 0;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-nav.open {
+        display: flex;
+    }
+
+    .header-nav-list {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    .btn-appointment {
+        margin-top: 1rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .header-container {
+        justify-content: space-between;
+    }
+}
