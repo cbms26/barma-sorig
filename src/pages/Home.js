@@ -2,10 +2,14 @@ import "../App.css"; // Import the main CSS file for styling
 
 import React from "react";
 
+import Slider from "react-slick"; // Import the slider component for testimonials
+
 import heroImage from "../assets/images/hero-bg.webp"; // Import the hero image
 import serviceImage1 from "../assets/images/service-item-1.webp"; // Import the service image 1
 import serviceImage2 from "../assets/images/service-item-2.jpg"; // Import the service image 2
 import serviceImage3 from "../assets/images/service-item-3.jpg"; // Import the service image 3
+
+import aboutUsVideo from "../assets/videos/barma-sorig-ad.mp4"; // Import the about us video
 
 import "../styles/Home.css"; // Import the CSS file for styling
 import { Link } from "react-router-dom";
@@ -86,15 +90,87 @@ function Home() {
 
       {/* About Section*/}
       <section className="about-section">
-        <div className="container">
-          <div className="about-header">
-            <h2>About Us</h2>
-            <p>
-              At Barma-Sorig, we are committed to providing exceptional care
-              that honors the rich traditions of healing. Our experienced
-              practitioners are dedicated to guiding you on your wellness
-              journey.
+        <div className="about-container container">
+          <div className="about-video">
+            <video src={aboutUsVideo} autoPlay muted loop playsInline></video>
+            <p className="video-caption">
+              🎥 Watch a glimpse of our healing rituals
             </p>
+          </div>
+          {/* Switch to Click To Watch Setting for the Video 
+            <div className="about-video">
+              <video src={aboutVideo} controls poster={videoThumbnail}></video>
+              <p className="video-caption">▶ Click to watch how Barma-Sorig heals with nature</p>
+            </div>
+          */}
+          <div className="about-content">
+            <h2>About Barma-Sorig</h2>
+            <p>
+              Barma-Sorig is a traditional healing center rooted in ancient
+              wisdom and herbal medicine. Our mission is to restore balance and
+              harmony in the body using time-tested practices, natural herbs,
+              and holistic therapies.
+            </p>
+            <p>
+              With a deep respect for Bhutanese Sowa-Rigpa traditions, we offer
+              treatments that support physical, emotional, and spiritual
+              well-being in a serene and caring environment.
+            </p>
+            <Link to="/about" className="btn">
+              Read More
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonial & Contact Section */}
+      {/* Contact Section */}
+      <section className="contact-testimonial-section">
+        <div className="contact-testimonial-container container">
+          {/* Contact CTA */}
+          <div className="contact-content">
+            <h2>Start Your Healing Journey</h2>
+            <p>
+              Whether you're curious about treatments or ready to book, we're
+              just a message away.
+            </p>
+            <Link to="/contact" className="btn">
+              Contact Us
+            </Link>
+          </div>
+
+          {/* Testimonial */}
+          <div className="testimonial-content testimonial-slider">
+            <Slider
+              dots={true}
+              infinite={true}
+              autoplay={true}
+              autoplaySpeed={4000}
+              speed={800}
+              slidesToShow={1}
+              slidesToScroll={1}
+            >
+              <div className="testimonial-slide">
+                <blockquote>
+                  “I felt a deep sense of calm and relief after just one
+                  session. The herbs, the energy, and the kindness — it's all
+                  real.”
+                </blockquote>
+                <cite>- Sonam Dema</cite>
+              </div>
+              <div className="testimonial-slide">
+                <blockquote>
+                  “Truly a healing experience. The herbal massage is magical.”
+                </blockquote>
+                <cite>- Karma Wangmo</cite>
+              </div>
+              <div className="testimonial-slide">
+                <blockquote>
+                  “Barma-Sorig brings ancient wisdom into modern lives.”
+                </blockquote>
+                <cite>- Pema Dorji</cite>
+              </div>
+            </Slider>
           </div>
         </div>
       </section>

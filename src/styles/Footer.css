@@ -1,0 +1,85 @@
+.site-footer {
+    background-color: #101820;
+    color: #fff;
+    padding: 4rem 1rem 2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Branding */
+.footer-branding img {
+    width: 60px;
+    margin-bottom: 1rem;
+}
+
+.footer-branding h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
+}
+
+.footer-branding p {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* Links & Contact */
+.footer-links h4,
+.footer-contact h4,
+.footer-social h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #d41515;
+}
+
+.footer-contact p {
+    margin-bottom: 0.5rem;
+    color: #ccc;
+}
+
+/* Social Icons */
+.social-icons a {
+    color: #ccc;
+    margin-right: 0.8rem;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #d41515;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: #aaa;
+    border-top: 1px solid #333;
+    padding-top: 1rem;
+}

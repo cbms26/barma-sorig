@@ -9,7 +9,9 @@ function Header() {
       <div className="container">
         {/* Left Section of the Header */}
         <div className="header-left ">
-          <img src={logo} alt="company logo"></img>
+          <Link to="/">
+            <img src={logo} alt="company logo"></img>
+          </Link>
           <div className="header-title">
             Barma Sorig <br /> Healing Center <br />
             {/* Company Name in Dzongkha - །། །བར་མ་གསོ་རིག་ལྟེ་བ།། */}
