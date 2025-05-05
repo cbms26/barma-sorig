@@ -69,3 +69,14 @@
     color: #666;
     line-height: 1.6;
 }
+
+/* Simplified home page cards */
+.service-card:not(.detailed) {
+    padding: 1.5rem;
+    min-height: 220px;
+}
+
+.service-card:not(.detailed) .service-details {
+    display: none;
+    /* Hide extra info on home */
+}

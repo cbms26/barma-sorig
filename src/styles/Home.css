@@ -1,73 +1,3 @@
-/* ===== Global Styles ===== */
-:root {
-    --primary: #2c3e50;
-    /* Midnight blue */
-    --secondary: #e74c3c;
-    /* Vibrant red */
-    --light: #ecf0f1;
-    /* Light gray */
-    --dark: #2c3e50;
-    /* Dark blue */
-    --text: #34495e;
-    /* Dark gray-blue */
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Open Sans', sans-serif;
-    line-height: 1.6;
-    color: var(--text);
-}
-
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-}
-
-.btn {
-    display: inline-block;
-    padding: 0.8rem 1.8rem;
-    border-radius: 4px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: var(--transition);
-    text-align: center;
-}
-
-.btn-primary {
-    background: var(--primary);
-    color: white;
-}
-
-.btn-primary:hover {
-    background: #1a252f;
-    transform: translateY(-2px);
-}
-
-.btn-secondary {
-    background: white;
-    color: var(--primary);
-    border: 2px solid var(--primary);
-}
-
-.btn-secondary:hover {
-    background: var(--primary);
-    color: white;
-}
-
-section {
-    padding: 2.2rem 0;
-}
-
 /* ===== Hero Section ===== */
 .hero-section {
     position: relative;
@@ -93,7 +23,7 @@ section {
     padding-bottom: 1.2rem;
     text-align: center;
     font-size: larger;
-    gap: 1rem;
+    gap: 0.6rem;
     display: flex;
     flex-direction: column;
 }
@@ -102,7 +32,7 @@ section {
     padding: 1.2rem;
     position: relative;
     z-index: 2;
-    max-width: 100%;
+    max-width: 80%;
     text-align: center;
     margin: 0 auto;
     border-radius: 20px;
@@ -229,6 +159,11 @@ section {
 
 .video-player button:hover {
     background: var(--secondary);
+}
+
+.about-content {
+    padding: 2rem;
+    text-align: center;
 }
 
 .about-content h2 {
