@@ -4,7 +4,7 @@ import aboutVideo from "../assets/videos/barma-sorig-ad.mp4";
 export const heroContent = {
   title: "Are you looking for a natural way to heal?",
   description:
-    "Barma-Sorig is a traditional healing practice that combines ancient Tibetan medicine with modern techniques. Our expert practitioners are dedicated to restoring balance and harmony in your life.",
+    "Experience the power of traditional Bhutanese medicine at Barma-Sorig.",
   buttons: [
     { text: "Learn More", link: "/about", className: "btn-primary" },
     { text: "Call Us", link: "/contact", className: "btn-secondary" },

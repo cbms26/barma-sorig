@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
-import { heroContent, testimonials, aboutContent } from "../data/homeData";
+import { heroContent, testimonials, aboutContent } from "../data/HomeData";
 import HeroSection from "../components/HeroSection";
 import ServiceCard from "../components/ServiceCard";
 import { featuredServices } from "../data/servicesData";

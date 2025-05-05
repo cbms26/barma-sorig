@@ -23,7 +23,7 @@ function Header() {
             <img src={logo} alt="company logo"></img>
           </Link>
           <div className="header-title">
-            Barma Sorig <br /> Healing Center <br />
+            Barma Sorig <br /> Healing Center
             {/* Company Name in Dzongkha - །། །བར་མ་གསོ་རིག་ལྟེ་བ།། */}
           </div>
         </div>
