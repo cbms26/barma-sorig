@@ -8,6 +8,8 @@ import Service from "./pages/Services";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 
+import Booking from "./pages/Booking";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -22,6 +24,8 @@ function App() {
         <Route path="/services" element={<Service />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
+
+        <Route path="/booking" element={<Booking />} />
       </Routes>
 
       <Footer />

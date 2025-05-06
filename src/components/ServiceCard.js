@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const ServiceCard = ({ title, description, icon, detailedView, image }) => {
   return (
     <div className={`service-card ${detailedView ? "detailed" : ""}`}>
-      <div className="service-icon">{icon}</div>
+      {image && <img src={image} alt={title} className="service-image" />}
       <h3>{title}</h3>
       <p>{description}</p>
 

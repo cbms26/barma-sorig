@@ -26,7 +26,7 @@ const Home = () => {
                 key={service.id}
                 title={service.title}
                 description={service.description}
-                icon={service.icon}
+                image={service.image}
                 detailedView={false} // Simpler cards for home page
               />
             ))}

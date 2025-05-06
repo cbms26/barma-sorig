@@ -55,7 +55,7 @@ function Header() {
 
           {/* Book an appointment CTA btn */}
           <div className="header-cta">
-            <Link to="/Contact" className="btn-appointment">
+            <Link to="/booking" className="btn btn-primary">
               Book Appointment
             </Link>
           </div>
