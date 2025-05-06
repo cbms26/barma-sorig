@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/barma-sorig/static/css/main.a26d6e74.css",
-    "main.js": "/barma-sorig/static/js/main.f9b4614e.js",
+    "main.css": "/barma-sorig/static/css/main.55a3bcb5.css",
+    "main.js": "/barma-sorig/static/js/main.ff91cd85.js",
     "static/js/453.59619da6.chunk.js": "/barma-sorig/static/js/453.59619da6.chunk.js",
     "static/media/therapeutic-massage-image.png": "/barma-sorig/static/media/therapeutic-massage-image.9def0987ab930178f1dd.png",
     "static/media/barma-sorig-ad.mp4": "/barma-sorig/static/media/barma-sorig-ad.4f6e049a2ecc18220aea.mp4",
@@ -16,12 +16,12 @@
     "static/media/slick.ttf": "/barma-sorig/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/barma-sorig/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/barma-sorig/index.html",
-    "main.a26d6e74.css.map": "/barma-sorig/static/css/main.a26d6e74.css.map",
-    "main.f9b4614e.js.map": "/barma-sorig/static/js/main.f9b4614e.js.map",
+    "main.55a3bcb5.css.map": "/barma-sorig/static/css/main.55a3bcb5.css.map",
+    "main.ff91cd85.js.map": "/barma-sorig/static/js/main.ff91cd85.js.map",
     "453.59619da6.chunk.js.map": "/barma-sorig/static/js/453.59619da6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a26d6e74.css",
-    "static/js/main.f9b4614e.js"
+    "static/css/main.55a3bcb5.css",
+    "static/js/main.ff91cd85.js"
   ]
 }
