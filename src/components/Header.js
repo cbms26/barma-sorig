@@ -10,9 +10,14 @@ function Header() {
   // State to manage the menu open/close status
   // This state is used to toggle the mobile menu visibility
   const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
 
   function toggleMenu() {
     setMenuOpen(!menuOpen);
+  }
+
+  function toggleServicesDropdown() {
+    setServicesDropdownOpen(!servicesDropdownOpen);
   }
 
   return (
@@ -52,13 +57,45 @@ function Header() {
                 About Us
               </NavLink>
             </li>
-            <li className="header-nav-item">
+            <li
+              className={`header-nav-item dropdown ${
+                servicesDropdownOpen ? "open" : ""
+              }`}
+              onMouseEnter={toggleServicesDropdown}
+              onMouseLeave={toggleServicesDropdown}
+            >
               <NavLink
                 to="/Services"
                 className={({ isActive }) => (isActive ? "active" : "")}
               >
                 Services
               </NavLink>
+              <ul className="dropdown-menu">
+                <li>
+                  <NavLink
+                    to="/Services/consulting"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    Consulting
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/Services/training"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    Training
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/Services/support"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    Support
+                  </NavLink>
+                </li>
+              </ul>
             </li>
             <li className="header-nav-item">
               <NavLink

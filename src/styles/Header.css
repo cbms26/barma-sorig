@@ -37,7 +37,11 @@ header img {
     /* Responsive Nav Spacing using clamp */
     /* previous css - gap: 2.2rem;*/
     gap: clamp(1.5rem, 4vw, 8rem);
+}
 
+nav>ul li {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
 }
 
 .header-nav-list {
@@ -46,6 +50,43 @@ header img {
     /* Responsive Nav list Spacing using clamp */
     /* previous css - gap: 2.2rem;*/
     gap: clamp(1.2rem, 4vw, 4rem);
+}
+
+.header-nav-item.dropdown {
+    position: relative;
+    /* padding-right: 20px; */
+}
+
+
+
+.header-nav-item .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+}
+
+.header-nav-item.dropdown.open .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
+    padding: 10px 20px;
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-menu li a.active {
+    font-weight: bold;
 }
 
 .header-nav-item>a {
