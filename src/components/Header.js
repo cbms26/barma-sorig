@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 import logo from "../logo.png";
@@ -22,10 +23,6 @@ function Header() {
           <Link to="/">
             <img src={logo} alt="company logo"></img>
           </Link>
-          <div className="header-title">
-            Barma Sorig <br /> Healing Center
-            {/* Company Name in Dzongkha - །། །བར་མ་གསོ་རིག་ལྟེ་བ།། */}
-          </div>
         </div>
 
         {/* Hamburger Icon */}
@@ -40,16 +37,36 @@ function Header() {
         <nav className={`header-nav ${menuOpen ? "open" : ""}`}>
           <ul className="header-nav-list">
             <li className="header-nav-item">
-              <Link to="/">Home</Link>
+              <NavLink
+                to="/"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Home
+              </NavLink>
             </li>
             <li className="header-nav-item">
-              <Link to="/About">About Us</Link>
+              <NavLink
+                to="/About"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                About Us
+              </NavLink>
             </li>
             <li className="header-nav-item">
-              <Link to="/Services">Services</Link>
+              <NavLink
+                to="/Services"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Services
+              </NavLink>
             </li>
             <li className="header-nav-item">
-              <Link to="/Gallery">Gallery</Link>
+              <NavLink
+                to="/Gallery"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Gallery
+              </NavLink>
             </li>
           </ul>
 
