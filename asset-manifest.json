@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/barma-sorig/static/css/main.55a3bcb5.css",
-    "main.js": "/barma-sorig/static/js/main.67d7e732.js",
+    "main.css": "/barma-sorig/static/css/main.08f6c71c.css",
+    "main.js": "/barma-sorig/static/js/main.eb06ecc6.js",
     "static/js/453.59619da6.chunk.js": "/barma-sorig/static/js/453.59619da6.chunk.js",
     "static/media/therapeutic-massage-image.png": "/barma-sorig/static/media/therapeutic-massage-image.9def0987ab930178f1dd.png",
     "static/media/barma-sorig-ad.mp4": "/barma-sorig/static/media/barma-sorig-ad.4f6e049a2ecc18220aea.mp4",
@@ -9,19 +9,19 @@
     "static/media/tsampa-detoxification-image.png": "/barma-sorig/static/media/tsampa-detoxification-image.c67e6c4ce1803b0350d4.png",
     "static/media/hero-bg.webp": "/barma-sorig/static/media/hero-bg.45a505c8565627785864.webp",
     "static/media/herbal-steam-image.jpg": "/barma-sorig/static/media/herbal-steam-image.57963690288cab0dcb6c.jpg",
-    "static/media/logo.png": "/barma-sorig/static/media/logo.5bd7129e03419fcba9a8.png",
     "static/media/head&scalp-therapy-image.jpg": "/barma-sorig/static/media/head&scalp-therapy-image.cb7319c8eda6ca221ac0.jpg",
+    "static/media/logo.png": "/barma-sorig/static/media/logo.705ac2d3106ddf9bf60d.png",
     "static/media/slick.svg": "/barma-sorig/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/barma-sorig/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/barma-sorig/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/barma-sorig/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/barma-sorig/index.html",
-    "main.55a3bcb5.css.map": "/barma-sorig/static/css/main.55a3bcb5.css.map",
-    "main.67d7e732.js.map": "/barma-sorig/static/js/main.67d7e732.js.map",
+    "main.08f6c71c.css.map": "/barma-sorig/static/css/main.08f6c71c.css.map",
+    "main.eb06ecc6.js.map": "/barma-sorig/static/js/main.eb06ecc6.js.map",
     "453.59619da6.chunk.js.map": "/barma-sorig/static/js/453.59619da6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.55a3bcb5.css",
-    "static/js/main.67d7e732.js"
+    "static/css/main.08f6c71c.css",
+    "static/js/main.eb06ecc6.js"
   ]
 }
