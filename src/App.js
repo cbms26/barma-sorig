@@ -1,14 +1,10 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Service from "./pages/Services";
-import Gallery from "./pages/Gallery";
-import Contact from "./pages/Contact";
+import "./App.css";
 
-import Booking from "./pages/Booking";
+import LandingPage from "./pages/Landing";
+import ServicesPage from "./pages/Services";
+import HomePage from "./pages/Home";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -16,19 +12,12 @@ import "slick-carousel/slick/slick-theme.css";
 function App() {
   return (
     <Router>
-      <Header />
-
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Service />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/contact" element={<Contact />} />
-
-        <Route path="/booking" element={<Booking />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/servicesPage" element={<ServicesPage />} />
+        <Route path="/homePage" element={<HomePage />} />
+        {/* Add more routes here as needed */}
       </Routes>
-
-      <Footer />
     </Router>
   );
 }

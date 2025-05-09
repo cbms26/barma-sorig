@@ -1,0 +1,170 @@
+.landingPage {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffffff, #e9b2b2, #9ec29e, #a9a9ca);
+    background-size: 400% 400%;
+    /* For smooth animation */
+    color: #333;
+    /* Default text color */
+    text-align: center;
+    padding: 2rem;
+    animation: gradientShift 10s ease infinite;
+    /* Animate the gradient */
+}
+
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+.landingPage-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #000;
+    /* Ensure text is visible on lighter parts of the gradient */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    /* Add subtle shadow for contrast */
+}
+
+.landingPage-content .logo {
+    width: 200px;
+    /* Adjust width as needed */
+    height: auto;
+    margin: 1rem auto;
+    /* Add spacing around the image */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.landingPage-content p {
+    font-size: 1.5rem;
+    color: #000;
+    /* Ensure visibility */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.landingPage-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+
+.btn {
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn i {
+    margin-right: 0.5rem;
+}
+
+.landingPage-buttons {
+    color: white;
+    font-weight: bold;
+    text-shadow: none;
+    /* Buttons should have clear text */
+}
+
+.btn-primary {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: white;
+    color: #2c3e50;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background: #ecf0f1;
+    color: #2c3e50;
+    transform: translateY(-2px);
+}
+
+.view-services {
+    margin-top: 1.5rem;
+    /* Add spacing above the link */
+    text-align: center;
+    /* Center the link */
+}
+
+.btn-link {
+    font-size: 1rem;
+    color: #3498db;
+    /* Blue color for the link */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.btn-link:hover {
+    color: #1d6fa5;
+    /* Darker blue on hover */
+    text-decoration: underline;
+    /* Add underline on hover */
+}
+
+@media (max-width: 768px) {
+    .landingPage-content h1 {
+        display: none;
+        /* Hide the heading on mobile */
+    }
+
+    .landingPage-content .logo {
+        width: 150px;
+        /* Reduce logo size for mobile */
+        height: auto;
+        margin: 0 auto;
+        /* Center the image horizontally */
+        display: block;
+    }
+
+    .landingPage-content p {
+        font-size: 1.2rem;
+        /* Adjust paragraph font size */
+        margin-bottom: 1.5rem;
+        /* Reduce spacing */
+        text-align: center;
+    }
+
+    .landingPage-buttons {
+        flex-direction: column;
+        /* Stack buttons vertically */
+        gap: 0.8rem;
+        /* Adjust spacing between buttons */
+    }
+
+    .btn {
+        width: 100%;
+        /* Make buttons full-width */
+        text-align: center;
+        padding: 0.8rem 1rem;
+        /* Adjust button padding */
+        font-size: 1rem;
+        /* Adjust button font size */
+    }
+}
