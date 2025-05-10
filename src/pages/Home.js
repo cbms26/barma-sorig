@@ -1,6 +1,10 @@
 import React from "react";
 
 import Header from "../components/Header";
+import Footer from "../components/Footer";
+
+import HeroBG from "../assets/images/hero-bg.webp";
+import BarmaSorigVideoAdvertisement from "../assets/videos/barma-sorig-ad.mp4";
 
 const HomePage = () => {
   return (
@@ -8,10 +12,17 @@ const HomePage = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="hero min-h-screen flex items-center pt-20 bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1547981609-4f6affc3b4f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')]">
-        <div className="container mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 serif">
-            Ancient Tibetan Healing for Modern Life
+      <section
+        className="hero min-h-screen flex items-center pt-20 bg-cover bg-center bg-fixed relative"
+        style={{ backgroundImage: `url(${HeroBG})` }}
+      >
+        {/* Overlay for translucency */}
+        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+
+        {/* Content */}
+        <div className="container mx-auto px-4 py-6 bg-gray-900 bg-opacity-60 text-center text-white relative z-10">
+          <h1 className="text-sky-500 text-4xl md:text-6xl font-bold mb-6 serif">
+            Traditional Ku-Nye for Modern Life
           </h1>
           <p className="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
             Experience the transformative power of traditional Barma-Sorig
@@ -26,7 +37,7 @@ const HomePage = () => {
             </a>
             <a
               href="#"
-              className="px-8 py-4 bg-white text-amber-900 font-medium rounded-full hover:bg-gray-100 transition text-lg"
+              className="px-8 py-4 bg-white text-red-600 font-medium rounded-full hover:bg-gray-300 transition text-lg"
             >
               Meet Our Healers
             </a>
@@ -38,15 +49,19 @@ const HomePage = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center">
+            {/* Video Advertisement */}
             <div className="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
-              <img
-                src="https://images.unsplash.com/photo-1589998059171-988d322b23dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-                alt="Tibetan healer"
+              <video
+                src={BarmaSorigVideoAdvertisement}
+                controls
                 className="rounded-lg shadow-xl w-full h-auto"
-              />
+              >
+                Your browser does not support the video tag.
+              </video>
             </div>
+            {/* Content */}
             <div className="lg:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-amber-900 serif">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-sky-500 serif">
                 The Barma-Sorig Tradition
               </h2>
               <p className="text-lg mb-6">
@@ -62,7 +77,7 @@ const HomePage = () => {
               </p>
               <a
                 href="#"
-                className="px-6 py-3 border-2 border-amber-900 text-amber-900 font-medium rounded-full hover:bg-amber-900 hover:text-white transition inline-flex items-center"
+                className="px-6 py-3 border-2 border-amber-900 text-red-500 font-medium rounded-full hover:bg-amber-900 hover:text-white transition inline-flex items-center"
               >
                 Learn More About Our Approach
                 <i className="fas fa-arrow-right ml-2"></i>
@@ -80,7 +95,7 @@ const HomePage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 serif">
-              Our Healing Treatments
+              Our Featured Healing Treatments
             </h2>
             <p className="text-xl max-w-3xl mx-auto">
               Each therapy is carefully selected and administered by our expert
@@ -122,7 +137,7 @@ const HomePage = () => {
                 <p className="mb-4">{treatment.description}</p>
                 <a
                   href="#"
-                  className="text-amber-900 font-medium inline-flex items-center"
+                  className="text-red-500 font-medium inline-flex items-center"
                 >
                   Learn More <i className="fas fa-arrow-right ml-2"></i>
                 </a>
@@ -131,6 +146,8 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
+      <Footer />
     </>
   );
 };

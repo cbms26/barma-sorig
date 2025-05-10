@@ -1,47 +1,35 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "../styles/Services.css";
 
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
-const services = [
-  {
-    title: "Massage Therapies",
-    subServices: [
-      {
-        title: "Ku Nye Massage",
-        description:
-          "A traditional Tibetan massage using herbal oils to stimulate circulation, release toxins, and promote deep relaxation.",
-      },
-      {
-        title: "Deep Tissue Massage",
-        description:
-          "A massage technique that focuses on realigning deeper layers of muscles and connective tissue.",
-      },
-    ],
-  },
-  {
-    title: "Herbal Treatments",
-    subServices: [
-      {
-        title: "Moxibustion",
-        description:
-          "The application of heat from burning mugwort to specific points to strengthen immunity and improve energy flow.",
-      },
-      {
-        title: "Herbal Therapy",
-        description:
-          "Customized herbal formulas prepared according to Tibetan medical principles to restore balance and vitality.",
-      },
-    ],
-  },
-];
+import servicesDataForServices from "../data/servicesDataForServices";
 
 function ServicesPage() {
   const [activeService, setActiveService] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
-  const toggleService = (index) => {
-    setActiveService(activeService === index ? null : index);
+  const openModal = (index) => {
+    setActiveService(index);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setActiveService(null);
+    setShowModal(false);
+  };
+
+  const handleBookNow = (serviceTitle, subServiceTitle) => {
+    // Navigate to the booking page with pre-filled service details
+    navigate(
+      `/booking?service=${encodeURIComponent(
+        serviceTitle
+      )}&subService=${encodeURIComponent(subServiceTitle)}`
+    );
   };
 
   return (
@@ -54,43 +42,76 @@ function ServicesPage() {
             <h2 className="section-title text-3xl font-bold text-center text-gray-800 mb-8">
               Our Services
             </h2>
-            <div className="services-grid grid grid-cols-1 md:grid-cols-2 gap-6">
-              {services.map((service, index) => (
-                <React.Fragment key={index}>
-                  <div
-                    className={`service-item bg-white shadow-md rounded-lg p-6 cursor-pointer transition-transform transform hover:scale-105 ${
-                      activeService === index ? "ring-2 ring-blue-500" : ""
-                    }`}
-                    onClick={() => toggleService(index)}
-                  >
-                    <h3 className="service-title text-xl font-semibold text-gray-800">
-                      {service.title}
-                    </h3>
-                  </div>
-                  {activeService === index && (
-                    <div className="sub-services col-span-1 md:col-span-2 bg-gray-100 rounded-lg p-6 mt-4">
-                      {service.subServices.map((subService, subIndex) => (
-                        <div
-                          key={subIndex}
-                          className="sub-service-item border-b border-gray-300 pb-4 mb-4 last:border-b-0 last:pb-0 last:mb-0"
-                        >
-                          <h4 className="sub-service-title text-lg font-medium text-gray-700">
-                            {subService.title}
-                          </h4>
-                          <p className="sub-service-description text-gray-600">
-                            {subService.description}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </React.Fragment>
+            <div className="services-grid grid grid-cols-1 md:grid-cols-2 gap-6 justify-center">
+              {servicesDataForServices.map((service, index) => (
+                <div
+                  key={index}
+                  className="service-card bg-white shadow-lg rounded-lg p-6 cursor-pointer transition-transform transform hover:scale-105"
+                  onClick={() => openModal(index)}
+                >
+                  <h3 className="service-title text-xl font-semibold text-gray-800 mb-4 text-center">
+                    {service.title}
+                  </h3>
+                  <p className="service-description text-gray-600 text-center">
+                    {service.subServices.length} Sub-services available
+                  </p>
+                </div>
               ))}
             </div>
           </div>
         </section>
+
+        {/* Modal for Sub-services */}
+        {showModal && activeService !== null && (
+          <div className="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="modal-content bg-white rounded-lg shadow-lg p-6 w-11/12 md:w-2/3 lg:w-1/2">
+              <button
+                className="close-button text-gray-500 hover:text-gray-800 float-right text-xl"
+                onClick={closeModal}
+              >
+                &times;
+              </button>
+              <h3 className="modal-title text-2xl font-bold text-gray-800 mb-4">
+                {servicesDataForServices[activeService].title}
+              </h3>
+              <div className="sub-services">
+                {servicesDataForServices[activeService].subServices.map(
+                  (subService, subIndex) => (
+                    <div
+                      key={subIndex}
+                      className="sub-service-item border-b border-gray-300 pb-4 mb-4 last:border-b-0 last:pb-0 last:mb-0"
+                    >
+                      <h4 className="sub-service-title text-lg font-medium text-gray-700">
+                        {subService.title}
+                      </h4>
+                      <p className="sub-service-description text-gray-600">
+                        {subService.description}
+                      </p>
+                      <p className="sub-service-price text-gray-800 font-semibold">
+                        Price: {subService.price}
+                      </p>
+                      <button
+                        className="book-now-btn bg-blue-500 text-white px-4 py-2 rounded mt-2 hover:bg-blue-600"
+                        onClick={() =>
+                          handleBookNow(
+                            servicesDataForServices[activeService].title,
+                            subService.title
+                          )
+                        }
+                      >
+                        Book Now
+                      </button>
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
+      <Footer />
     </>
   );
 }
+
 export default ServicesPage;
