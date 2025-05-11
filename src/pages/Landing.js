@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "../styles/Landing.css";
 
-import logoWithName from "../assets/images/logo-with-name.png"; // Adjust the path as necessary
+import logoWithName from "../assets/images/logo-with-name.png";
 
 function LandingPage() {
   return (
@@ -18,16 +18,17 @@ function LandingPage() {
           “Traditional Ku-Nye (massage) Treatment & more, for Health &
           Well-being”
         </p>
-        <div className="landingPage-buttons">
-          <Link to="/booking" className="btn btn-primary">
+
+        <div className="landingPage-buttons py-6">
+          <Link to="/bookingPage" className="btn btn-primary">
             <i className="fas fa-calendar-alt"></i> Book Appointment
           </Link>
           <p>or</p>
-          <Link to="/contact" className="btn btn-secondary">
+          <Link to="/contactPage" className="btn btn-secondary">
             <i className="fas fa-phone-alt"></i> Call Us Now
           </Link>
         </div>
-        {/* Add the "View All Our Services" link */}
+
         <div className="view-services">
           <Link to="/servicesPage" className="btn btn-link">
             View All Our Services

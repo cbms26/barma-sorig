@@ -1,8 +1,19 @@
-// filepath: w:\My Self-Learning Projects\React Project\Barma-Sorig-Website\barma-sorig\src\data\servicesDataForServices.js
-const servicesDataForServices = [
+const servicesData = [
   {
     title: "Massage Therapies",
     subServices: [
+      {
+        title: "Ku Nye Massage",
+        description:
+          "A traditional Tibetan massage using herbal oils to stimulate circulation, release toxins, and promote deep relaxation.",
+        price: "$50",
+      },
+      {
+        title: "Deep Tissue Massage",
+        description:
+          "A massage technique that focuses on realigning deeper layers of muscles and connective tissue.",
+        price: "$70",
+      },
       {
         title: "Ku Nye Massage",
         description:
@@ -36,4 +47,4 @@ const servicesDataForServices = [
   },
 ];
 
-export default servicesDataForServices;
+export default servicesData;

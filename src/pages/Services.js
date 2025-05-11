@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "../styles/Services.css";
+import Header from "../components/Header.js";
+import Footer from "../components/Footer.js";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-
-import servicesDataForServices from "../data/servicesDataForServices";
+import servicesData from "../data/servicesData.js";
 
 function ServicesPage() {
   const [activeService, setActiveService] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const openModal = (index) => {
     setActiveService(index);
@@ -23,38 +21,59 @@ function ServicesPage() {
     setShowModal(false);
   };
 
-  const handleBookNow = (serviceTitle, subServiceTitle) => {
-    // Navigate to the booking page with pre-filled service details
+  const handleBookNow = (serviceTitle, subServiceTitle, subServicePrice) => {
     navigate(
-      `/booking?service=${encodeURIComponent(
+      `/bookingPage?service=${encodeURIComponent(
         serviceTitle
-      )}&subService=${encodeURIComponent(subServiceTitle)}`
+      )}&subService=${encodeURIComponent(
+        subServiceTitle
+      )}&price=${encodeURIComponent(subServicePrice)}`
     );
   };
 
   return (
     <>
       <Header />
-      <div className="services-page bg-gray-50 py-10">
+      <div className="services-page bg-gray-50">
+        {/* Hero Section */}
+        <section className="hero bg-amber-900 text-white py-16">
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-5xl font-bold mb-4">Our Services</h1>
+            <p className="text-lg">
+              Discover a wide range of services tailored to meet your needs.
+            </p>
+          </div>
+        </section>
+
         {/* Services Section */}
-        <section className="services">
+        <section className="services py-16">
           <div className="container mx-auto px-4">
-            <h2 className="section-title text-3xl font-bold text-center text-gray-800 mb-8">
-              Our Services
+            <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
+              Explore Our Offerings
             </h2>
-            <div className="services-grid grid grid-cols-1 md:grid-cols-2 gap-6 justify-center">
-              {servicesDataForServices.map((service, index) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {servicesData.map((service, index) => (
                 <div
                   key={index}
-                  className="service-card bg-white shadow-lg rounded-lg p-6 cursor-pointer transition-transform transform hover:scale-105"
+                  className="service-card bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl"
                   onClick={() => openModal(index)}
                 >
-                  <h3 className="service-title text-xl font-semibold text-gray-800 mb-4 text-center">
-                    {service.title}
-                  </h3>
-                  <p className="service-description text-gray-600 text-center">
-                    {service.subServices.length} Sub-services available
-                  </p>
+                  <div className="service-image h-48 bg-gray-200">
+                    {/* Placeholder for service image */}
+                    <img
+                      src="https://via.placeholder.com/400x300"
+                      alt={service.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600">
+                      {service.subServices.length} Sub-services available
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -64,38 +83,37 @@ function ServicesPage() {
         {/* Modal for Sub-services */}
         {showModal && activeService !== null && (
           <div className="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="modal-content bg-white rounded-lg shadow-lg p-6 w-11/12 md:w-2/3 lg:w-1/2">
+            <div className="modal-content bg-white rounded-lg shadow-lg p-8 w-11/12 md:w-2/3 lg:w-1/2 max-h-[90vh] overflow-hidden">
               <button
-                className="close-button text-gray-500 hover:text-gray-800 float-right text-xl"
+                className="close-button text-gray-500 hover:text-gray-800 float-right text-2xl"
                 onClick={closeModal}
               >
                 &times;
               </button>
-              <h3 className="modal-title text-2xl font-bold text-gray-800 mb-4">
-                {servicesDataForServices[activeService].title}
+              <h3 className="modal-title text-3xl font-bold text-blue-600 mb-6 text-center">
+                {servicesData[activeService].title}
               </h3>
-              <div className="sub-services">
-                {servicesDataForServices[activeService].subServices.map(
+              <div className="sub-services space-y-6 overflow-y-auto max-h-[70vh] pr-4">
+                {servicesData[activeService].subServices.map(
                   (subService, subIndex) => (
                     <div
                       key={subIndex}
-                      className="sub-service-item border-b border-gray-300 pb-4 mb-4 last:border-b-0 last:pb-0 last:mb-0"
+                      className="sub-service-item border-b border-gray-300 pb-4 last:border-b-0"
                     >
-                      <h4 className="sub-service-title text-lg font-medium text-gray-700">
+                      <h4 className="text-xl font-medium text-gray-800">
                         {subService.title}
                       </h4>
-                      <p className="sub-service-description text-gray-600">
-                        {subService.description}
-                      </p>
-                      <p className="sub-service-price text-gray-800 font-semibold">
+                      <p className="text-gray-600">{subService.description}</p>
+                      <p className="text-gray-800 font-semibold">
                         Price: {subService.price}
                       </p>
                       <button
-                        className="book-now-btn bg-blue-500 text-white px-4 py-2 rounded mt-2 hover:bg-blue-600"
+                        className="bg-blue-500 text-white px-6 py-2 rounded mt-4 hover:bg-blue-600 transition-all"
                         onClick={() =>
                           handleBookNow(
-                            servicesDataForServices[activeService].title,
-                            subService.title
+                            servicesData[activeService].title,
+                            subService.title,
+                            subService.price
                           )
                         }
                       >

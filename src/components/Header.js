@@ -3,13 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-import BookingPage from "../pages/Booking";
+// import BookingPage from "../pages/Booking.js";
 
 import LogoWithName from "../assets/images/logo-with-name.png";
 
-import mainMenus from "../data/mainMenus";
+import mainMenus from "../data/mainMenus.js";
 
-import "../styles/Header.css";
+// import "../styles/Header.css";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -38,7 +38,7 @@ export default function Header() {
     <nav
       className={classNames(
         "sticky top-0 z-50 bg-gray-800 transition-all duration-200",
-        isScrolled ? "py-6 shadow-lg" : "py-3"
+        isScrolled ? "py-6 shadow-lg bg-opacity-95" : "py-3"
       )}
     >
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -66,12 +66,17 @@ export default function Header() {
                   src={LogoWithName}
                   className={classNames(
                     "transition-all duration-300",
-                    isScrolled ? "h-28 w-auto" : "h-20 w-auto"
+                    isScrolled ? "px-6 h-28 w-auto" : "h-20 w-auto"
                   )}
                 />
               </Link>
             </div>
-            <div className="hidden sm:ml-6 sm:block">
+            <div
+              className={classNames(
+                "hidden sm:ml-6 sm:block",
+                isScrolled ? "text-lg" : "text-base"
+              )}
+            >
               <div className="flex space-x-4">
                 {mainMenus.map((item) =>
                   item.hasDropdown ? (
@@ -89,7 +94,7 @@ export default function Header() {
                         {item.name}
                       </Link>
 
-                      {/* Dropdown Menu */}
+                      {/* Services Dropdown Menu */}
                       <div className="absolute left-0 top-full hidden w-96 origin-top-left rounded-md bg-white py-4 px-6 shadow-lg ring-1 ring-black/5 group-hover:block z-10">
                         <div className="grid grid-cols-2 gap-4">
                           {item.dropdownItems.map((mainService) => (
@@ -131,6 +136,7 @@ export default function Header() {
               </div>
             </div>
           </div>
+          {/* Book Appointment btn */}
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <Link
               to="/bookingPage"

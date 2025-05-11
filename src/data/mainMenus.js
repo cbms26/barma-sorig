@@ -26,7 +26,7 @@ const navigation = [
     ],
   },
   { name: "About", to: "/aboutPage" },
-  { name: "Contact", to: "/contact" },
+  { name: "Contact", to: "/contactPage" },
 ];
 
 export default navigation;

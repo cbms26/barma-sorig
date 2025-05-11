@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import { db } from "../firebaseConfig.js";
 
-import Header from "../components/Header";
-
-import servicesDataForBooking from "../data/servicesDataForBooking";
+import Header from "../components/Header.js";
 
 function BookingPage() {
   const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     service: "",
     subService: "",
+    price: "",
     name: "",
     email: "",
     phone: "",
@@ -17,33 +18,48 @@ function BookingPage() {
     time: "",
   });
 
+  const [servicesData, setServicesData] = useState([]);
   const [availableSubServices, setAvailableSubServices] = useState([]);
 
+  // Fetch services and sub-services from Firestore
   useEffect(() => {
-    // Pre-fill service and sub-service from query parameters
+    const fetchServices = async () => {
+      const servicesCollection = collection(db, "servicesData");
+      const servicesSnapshot = await getDocs(servicesCollection);
+      const servicesList = servicesSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setServicesData(servicesList);
+    };
+
+    fetchServices();
+  }, []);
+
+  // Pre-fill form and update available sub-services
+  useEffect(() => {
     const service = searchParams.get("service") || "";
     const subService = searchParams.get("subService") || "";
+    const price = searchParams.get("price") || "";
+
     setFormData((prevData) => ({
       ...prevData,
       service,
       subService,
+      price,
     }));
 
     // Update available sub-services based on the pre-filled service
-    const selectedService = servicesDataForBooking.find(
-      (item) => item.service === service
-    );
+    const selectedService = servicesData.find((item) => item.name === service);
     setAvailableSubServices(selectedService ? selectedService.subServices : []);
-  }, [searchParams]);
+  }, [searchParams, servicesData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     // Update sub-services dropdown when service changes
     if (name === "service") {
-      const selectedService = servicesDataForBooking.find(
-        (item) => item.service === value
-      );
+      const selectedService = servicesData.find((item) => item.name === value);
       setAvailableSubServices(
         selectedService ? selectedService.subServices : []
       );
@@ -51,6 +67,17 @@ function BookingPage() {
         ...prevData,
         [name]: value,
         subService: "", // Reset sub-service when service changes
+        price: "", // Reset price when service changes
+      }));
+    } else if (name === "subService") {
+      // Update price based on selected sub-service
+      const selectedSubService = availableSubServices.find(
+        (sub) => sub.title === value
+      );
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+        price: selectedSubService ? selectedSubService.price : "",
       }));
     } else {
       setFormData((prevData) => ({
@@ -60,11 +87,53 @@ function BookingPage() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Booking Details:", formData);
-    alert("Your booking has been submitted successfully!");
-    // Add logic to send booking details to the server
+
+    try {
+      // Validate that the date and time are in the future
+      const selectedDate = new Date(`${formData.date}T${formData.time}`);
+      const now = new Date();
+
+      if (selectedDate <= now) {
+        alert("Please select a future date and time for your booking.");
+        return;
+      }
+
+      // Format the time to include AM/PM
+      const [hours, minutes] = formData.time.split(":");
+      const formattedTime = `${+hours % 12 || 12}:${minutes} ${
+        +hours >= 12 ? "PM" : "AM"
+      }`;
+
+      // Prepare the data to be saved
+      const bookingData = {
+        ...formData,
+        time: formattedTime, // Use the formatted time
+      };
+
+      // Add booking data to Firestore
+      const bookingsCollection = collection(db, "bookings");
+      await addDoc(bookingsCollection, bookingData);
+
+      alert("Your booking has been submitted successfully!");
+      console.log("Booking Details:", bookingData);
+
+      // Reset the form after submission
+      setFormData({
+        service: "",
+        subService: "",
+        price: "",
+        name: "",
+        email: "",
+        phone: "",
+        date: "",
+        time: "",
+      });
+    } catch (error) {
+      console.error("Error submitting booking:", error);
+      alert("There was an error submitting your booking. Please try again.");
+    }
   };
 
   return (
@@ -95,9 +164,9 @@ function BookingPage() {
                 required
               >
                 <option value="">Select a service</option>
-                {servicesDataForBooking.map((service, index) => (
-                  <option key={index} value={service.service}>
-                    {service.service}
+                {servicesData.map((service, index) => (
+                  <option key={index} value={service.name}>
+                    {service.name}
                   </option>
                 ))}
               </select>
@@ -120,11 +189,28 @@ function BookingPage() {
               >
                 <option value="">Select a sub-service</option>
                 {availableSubServices.map((subService, index) => (
-                  <option key={index} value={subService}>
-                    {subService}
+                  <option key={index} value={subService.title}>
+                    {subService.title}
                   </option>
                 ))}
               </select>
+            </div>
+            <div className="form-group mb-4">
+              <label
+                htmlFor="price"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                Price
+              </label>
+              <input
+                type="text"
+                id="price"
+                name="price"
+                value={formData.price}
+                onChange={handleChange}
+                className="w-full border border-gray-300 rounded px-4 py-2"
+                readOnly
+              />
             </div>
             <div className="form-group mb-4">
               <label

@@ -1,7 +1,7 @@
 import React from "react";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/Header.js";
+import Footer from "../components/Footer.js";
 
 import HeroBG from "../assets/images/hero-bg.webp";
 import BarmaSorigVideoAdvertisement from "../assets/videos/barma-sorig-ad.mp4";
