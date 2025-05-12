@@ -1,11 +1,12 @@
 {
   "files": {
     "main.css": "/barma-sorig/static/css/main.c46911ef.css",
-    "main.js": "/barma-sorig/static/js/main.20badd43.js",
+    "main.js": "/barma-sorig/static/js/main.5ac206b4.js",
     "static/js/453.59619da6.chunk.js": "/barma-sorig/static/js/453.59619da6.chunk.js",
     "static/media/barma-sorig-ad.mp4": "/barma-sorig/static/media/barma-sorig-ad.4f6e049a2ecc18220aea.mp4",
     "static/media/hero-bg.webp": "/barma-sorig/static/media/hero-bg.45a505c8565627785864.webp",
     "static/media/salon-service.png": "/barma-sorig/static/media/salon-service.b77f9f049063ea17f73b.png",
+    "static/media/video-thumbnail.jpg": "/barma-sorig/static/media/video-thumbnail.ef0fd8c580103e176324.jpg",
     "static/media/logo-with-name.png": "/barma-sorig/static/media/logo-with-name.044e0ecc7ee2a4f519e0.png",
     "static/media/spa-service.jpg": "/barma-sorig/static/media/spa-service.8e8eac618612aa338af3.jpg",
     "static/media/slick.svg": "/barma-sorig/static/media/slick.2630a3e3eab21c607e21.svg",
@@ -14,11 +15,11 @@
     "static/media/slick.woff": "/barma-sorig/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/barma-sorig/index.html",
     "main.c46911ef.css.map": "/barma-sorig/static/css/main.c46911ef.css.map",
-    "main.20badd43.js.map": "/barma-sorig/static/js/main.20badd43.js.map",
+    "main.5ac206b4.js.map": "/barma-sorig/static/js/main.5ac206b4.js.map",
     "453.59619da6.chunk.js.map": "/barma-sorig/static/js/453.59619da6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c46911ef.css",
-    "static/js/main.20badd43.js"
+    "static/js/main.5ac206b4.js"
   ]
 }
