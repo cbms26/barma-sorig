@@ -8,19 +8,39 @@ const navigation = [
       {
         name: "SPA Services",
         subServices: [
-          { name: "Whole Body Massage", to: "/services/ku-nye" },
-          { name: "Head & Facial Massage", to: "/services/deep-tissue" },
-          { name: "Foot Massage", to: "/services/hot-stone" },
-          { name: "Herbal Steam", to: "/services/swedish" },
+          {
+            name: "Whole Body Massage",
+            to: "/servicesPage?service=SPA Treatments&category=Whole Body Ku Nye Massage",
+          },
+          {
+            name: "Head & Facial Massage",
+            to: "/servicesPage?service=SPA Treatments&category=Head, Face and Foot Massage",
+          },
+          {
+            name: "Herbal Steam",
+            to: "/servicesPage?service=SPA Treatments&category=Herbal Steam (Amrita's)",
+          },
         ],
       },
       {
         name: "Salon Services",
         subServices: [
-          { name: "Hair Care", to: "/services/moxibustion" },
-          { name: "Face & Brows", to: "/services/herbal-therapy" },
-          { name: "Waxing", to: "/services/acupressure" },
-          { name: "Hans & ", to: "/services/cupping" },
+          {
+            name: "Hair Care",
+            to: "/servicesPage?service=Salon Services&category=Hair Care",
+          },
+          {
+            name: "Face & Brows",
+            to: "/servicesPage?service=Salon Services&category=Face and Brows",
+          },
+          {
+            name: "Waxing",
+            to: "/servicesPage?service=Salon Services&category=Waxing",
+          },
+          {
+            name: "Hands & Feet",
+            to: "/servicesPage?service=Salon Services&category=Hands and Feet",
+          },
         ],
       },
     ],

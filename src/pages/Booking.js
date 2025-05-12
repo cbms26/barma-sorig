@@ -11,6 +11,8 @@ function BookingPage() {
     service: "",
     subService: "",
     price: "",
+    benefits: "",
+    duration: "",
     name: "",
     email: "",
     phone: "",
@@ -42,15 +44,27 @@ function BookingPage() {
     const subService = searchParams.get("subService") || "";
     const price = searchParams.get("price") || "";
 
+    // Find the selected service
+    const selectedService = servicesData.find((item) => item.name === service);
+
+    // Find the selected sub-service
+    const selectedSubService = selectedService?.subServices.find(
+      (sub) => sub.title === subService
+    );
+
+    // Update formData and availableSubServices
     setFormData((prevData) => ({
       ...prevData,
       service,
       subService,
       price,
+      benefits: selectedSubService ? selectedSubService.benefits || "" : "",
+      duration:
+        selectedSubService && selectedSubService.duration !== "N/A"
+          ? selectedSubService.duration
+          : "",
     }));
 
-    // Update available sub-services based on the pre-filled service
-    const selectedService = servicesData.find((item) => item.name === service);
     setAvailableSubServices(selectedService ? selectedService.subServices : []);
   }, [searchParams, servicesData]);
 
@@ -68,9 +82,11 @@ function BookingPage() {
         [name]: value,
         subService: "", // Reset sub-service when service changes
         price: "", // Reset price when service changes
+        benefits: "", // Reset benefits when service changes
+        duration: "", // Reset duration when service changes
       }));
     } else if (name === "subService") {
-      // Update price based on selected sub-service
+      // Update price, benefits, and duration based on selected sub-service
       const selectedSubService = availableSubServices.find(
         (sub) => sub.title === value
       );
@@ -78,6 +94,8 @@ function BookingPage() {
         ...prevData,
         [name]: value,
         price: selectedSubService ? selectedSubService.price : "",
+        benefits: selectedSubService ? selectedSubService.benefits : "",
+        duration: selectedSubService ? selectedSubService.duration : "",
       }));
     } else {
       setFormData((prevData) => ({
@@ -124,6 +142,8 @@ function BookingPage() {
         service: "",
         subService: "",
         price: "",
+        benefits: "",
+        duration: "",
         name: "",
         email: "",
         phone: "",
@@ -195,23 +215,55 @@ function BookingPage() {
                 ))}
               </select>
             </div>
-            <div className="form-group mb-4">
-              <label
-                htmlFor="price"
-                className="block text-gray-700 font-medium mb-2"
-              >
-                Price
-              </label>
-              <input
-                type="text"
-                id="price"
-                name="price"
-                value={formData.price}
-                onChange={handleChange}
-                className="w-full border border-gray-300 rounded px-4 py-2"
-                readOnly
-              />
-            </div>
+            {formData.price && (
+              <div className="form-group mb-4">
+                <label
+                  htmlFor="price"
+                  className="block text-gray-700 font-medium mb-2"
+                >
+                  Price
+                </label>
+                <div
+                  id="price"
+                  className="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100 text-gray-700"
+                >
+                  {formData.price}
+                </div>
+              </div>
+            )}
+            {formData.service === "Traditional SPA Treatments" &&
+              formData.benefits && (
+                <div className="form-group mb-4">
+                  <label
+                    htmlFor="benefits"
+                    className="block text-gray-700 font-medium mb-2"
+                  >
+                    Benefits
+                  </label>
+                  <div
+                    id="benefits"
+                    className="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100 text-gray-700"
+                  >
+                    {formData.benefits}
+                  </div>
+                </div>
+              )}
+            {formData.duration && (
+              <div className="form-group mb-4">
+                <label
+                  htmlFor="duration"
+                  className="block text-gray-700 font-medium mb-2"
+                >
+                  Duration
+                </label>
+                <div
+                  id="duration"
+                  className="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100 text-gray-700"
+                >
+                  {formData.duration}
+                </div>
+              </div>
+            )}
             <div className="form-group mb-4">
               <label
                 htmlFor="name"

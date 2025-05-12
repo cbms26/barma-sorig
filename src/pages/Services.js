@@ -1,15 +1,46 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 
 import servicesData from "../data/servicesData.js";
 
+import spaServiceImage from "../assets/images/spa-service.jpg";
+import salonServiceImage from "../assets/images/salon-service.png";
+
 function ServicesPage() {
+  const location = useLocation();
   const [activeService, setActiveService] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  const categoryRefs = useRef({}); // Store refs for each category
+
+  useEffect(() => {
+    // Parse query parameters
+    const params = new URLSearchParams(location.search);
+    const service = params.get("service"); // Service name (e.g., "SPA Treatments")
+    const category = params.get("category"); // Category name (e.g., "Whole Body Ku Nye Massage")
+
+    if (service) {
+      // Find the service (category) by its name
+      const serviceIndex = servicesData.findIndex(
+        (s) => s.title.toLowerCase() === service.toLowerCase()
+      );
+      if (serviceIndex !== -1) {
+        setActiveService(serviceIndex); // Set the active service (category)
+        setShowModal(true); // Open the modal
+
+        // Scroll to the category section after the modal opens
+        setTimeout(() => {
+          const categoryRef = categoryRefs.current[category];
+          if (categoryRef) {
+            categoryRef.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 300); // Delay to ensure modal is rendered
+      }
+    }
+  }, [location.search]);
 
   const openModal = (index) => {
     setActiveService(index);
@@ -47,21 +78,24 @@ function ServicesPage() {
 
         {/* Services Section */}
         <section className="services py-16">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
               Explore Our Offerings
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="flex flex-wrap gap-8 justify-center items-center">
               {servicesData.map((service, index) => (
                 <div
                   key={index}
-                  className="service-card bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl"
+                  className="service-card bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl w-80"
                   onClick={() => openModal(index)}
                 >
-                  <div className="service-image h-48 bg-gray-200">
-                    {/* Placeholder for service image */}
+                  <div className="service-image h-48 bg-gray-200 cursor-pointer">
                     <img
-                      src="https://via.placeholder.com/400x300"
+                      src={
+                        service.title === "SPA Treatments"
+                          ? spaServiceImage
+                          : salonServiceImage
+                      }
                       alt={service.title}
                       className="w-full h-full object-cover"
                     />
@@ -94,34 +128,67 @@ function ServicesPage() {
                 {servicesData[activeService].title}
               </h3>
               <div className="sub-services space-y-6 overflow-y-auto max-h-[70vh] pr-4">
-                {servicesData[activeService].subServices.map(
-                  (subService, subIndex) => (
-                    <div
-                      key={subIndex}
-                      className="sub-service-item border-b border-gray-300 pb-4 last:border-b-0"
-                    >
-                      <h4 className="text-xl font-medium text-gray-800">
-                        {subService.title}
-                      </h4>
-                      <p className="text-gray-600">{subService.description}</p>
-                      <p className="text-gray-800 font-semibold">
-                        Price: {subService.price}
-                      </p>
-                      <button
-                        className="bg-blue-500 text-white px-6 py-2 rounded mt-4 hover:bg-blue-600 transition-all"
-                        onClick={() =>
-                          handleBookNow(
-                            servicesData[activeService].title,
-                            subService.title,
-                            subService.price
-                          )
-                        }
-                      >
-                        Book Now
-                      </button>
-                    </div>
+                {/* Group sub-services by category */}
+                {Object.entries(
+                  servicesData[activeService].subServices.reduce(
+                    (categories, subService) => {
+                      const category = subService.category || "Other"; // Default to "Other" if no category
+                      if (!categories[category]) {
+                        categories[category] = [];
+                      }
+                      categories[category].push(subService);
+                      return categories;
+                    },
+                    {}
                   )
-                )}
+                ).map(([category, subServices]) => (
+                  <div
+                    key={category}
+                    ref={(el) => (categoryRefs.current[category] = el)} // Store ref for each category
+                    className="category-section mb-6"
+                  >
+                    {/* Render category heading */}
+                    <div className="category-heading bg-amber-100 text-amber-900 px-4 py-2 rounded-md shadow-md mb-4">
+                      <h4 className="text-2xl font-bold">{category}</h4>
+                    </div>
+                    {/* Render sub-services under the category */}
+                    {subServices.map((subService, subIndex) => (
+                      <div
+                        key={subIndex}
+                        className="sub-service-item border-b border-gray-300 pb-4 last:border-b-0"
+                      >
+                        <h5 className="text-xl font-medium text-gray-800">
+                          {subService.title}
+                        </h5>
+                        {subService.benefits && (
+                          <p className="text-gray-600">
+                            <strong>Benefits:</strong> {subService.benefits}
+                          </p>
+                        )}
+                        {subService.duration && (
+                          <p className="text-gray-600">
+                            <strong>Duration:</strong> {subService.duration}
+                          </p>
+                        )}
+                        <p className="text-gray-800 font-semibold">
+                          <strong>Price:</strong> {subService.price}
+                        </p>
+                        <button
+                          className="bg-blue-500 text-white px-6 py-2 rounded mt-4 hover:bg-blue-600 transition-all"
+                          onClick={() =>
+                            handleBookNow(
+                              servicesData[activeService].title,
+                              subService.title,
+                              subService.price
+                            )
+                          }
+                        >
+                          Book Now
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                ))}
               </div>
             </div>
           </div>

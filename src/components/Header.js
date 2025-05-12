@@ -60,7 +60,7 @@ export default function Header() {
           {/* Logo */}
           <div className="flex flex-1 items-center justify-center sm:items-center sm:justify-start">
             <div className="flex shrink-0 items-center">
-              <Link to={"/homePage"}>
+              <Link to={"/"}>
                 <img
                   alt="Barma Sorig"
                   src={LogoWithName}
@@ -99,7 +99,7 @@ export default function Header() {
                         <div className="grid grid-cols-2 gap-4">
                           {item.dropdownItems.map((mainService) => (
                             <div key={mainService.name}>
-                              <h3 className="text-gray-700 font-semibold text-sm mb-2">
+                              <h3 className="text-gray-700 font-semibold text-md mb-2">
                                 {mainService.name}
                               </h3>
                               <div className="space-y-1">
@@ -137,12 +137,12 @@ export default function Header() {
             </div>
           </div>
           {/* Book Appointment btn */}
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div className="absolute inset-y-0 right-0 flex text-center items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <Link
               to="/bookingPage"
               className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
-              Book Appointment
+              Book Now
             </Link>
           </div>
         </div>

@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import logoImage from "../assets/images/logo-with-name.png";
+
 export default function Footer() {
   return (
     <footer className="bg-gray-800 text-white py-10">
@@ -6,29 +9,41 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
           {/* Logo and Description */}
           <div className="text-center md:text-left mb-6 md:mb-0">
-            <h2 className="text-2xl font-bold text-sky-500 mb-2">
-              Barma Sorig Traditional Healing Center
-            </h2>
+            <Link to="/">
+              <img
+                className="h-28"
+                src={logoImage}
+                alt="Barma Sorig Logo"
+              ></img>
+            </Link>
             <p className="text-gray-400">
-              Bringing ancient Tibetan healing to the modern world. Experience
-              balance, harmony, and holistic well-being.
+              Bringing ancient Traditional healing to the modern world. <br />
+              Experience balance, harmony, and holistic well-being.
             </p>
+          </div>
+
+          {/* Opening Hours */}
+          <div className="text-center md:text-left mb-6 md:mb-0">
+            <h3 className="text-xl font-bold text-sky-500 mb-2">
+              Opening Hours
+            </h3>
+            <p className="text-gray-400">Monday - Sunday: 9:00 AM- 08:00 PM</p>
           </div>
 
           {/* Navigation Links */}
           <div className="flex flex-col md:flex-row gap-6 text-center">
-            <a href="/homePage" className="hover:text-sky-500 transition">
+            <Link to="/homePage" className="hover:text-sky-500 transition">
               Home
-            </a>
-            <a href="/servicesPage" className="hover:text-sky-500 transition">
+            </Link>
+            <Link to="/servicesPage" className="hover:text-sky-500 transition">
               Services
-            </a>
-            <a href="/about" className="hover:text-sky-500 transition">
+            </Link>
+            <Link to="/aboutPage" className="hover:text-sky-500 transition">
               About
-            </a>
-            <a href="/contact" className="hover:text-sky-500 transition">
+            </Link>
+            <Link to="/contactPage" className="hover:text-sky-500 transition">
               Contact
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -40,7 +55,7 @@ export default function Footer() {
           {/* Social Media Links */}
           <div className="flex gap-4 mb-4 md:mb-0">
             <a
-              href="#"
+              href="https://www.facebook.com/barmasorighealingcenter"
               className="text-gray-400 hover:text-sky-500 transition text-xl"
               aria-label="Facebook"
             >

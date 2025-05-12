@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 
 import HeroBG from "../assets/images/hero-bg.webp";
 import BarmaSorigVideoAdvertisement from "../assets/videos/barma-sorig-ad.mp4";
+import videoThumbnail from "../assets/images/video-thumbnail.jpg";
 
 const HomePage = () => {
   return (
@@ -29,18 +31,18 @@ const HomePage = () => {
             therapies to restore balance and harmony to your body and mind.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a
-              href="#"
+            <Link
+              to="/servicesPage"
               className="px-8 py-4 bg-amber-900 text-white font-medium rounded-full hover:bg-amber-800 transition btn-primary text-lg"
             >
               Explore Treatments
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/aboutPage"
               className="px-8 py-4 bg-white text-red-600 font-medium rounded-full hover:bg-gray-300 transition text-lg"
             >
               Meet Our Healers
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -54,6 +56,7 @@ const HomePage = () => {
               <video
                 src={BarmaSorigVideoAdvertisement}
                 controls
+                poster={videoThumbnail}
                 className="rounded-lg shadow-xl w-full h-auto"
               >
                 Your browser does not support the video tag.
@@ -75,13 +78,13 @@ const HomePage = () => {
                 world, offering personalized treatments that address physical
                 ailments, emotional imbalances, and energetic blockages.
               </p>
-              <a
-                href="#"
+              <Link
+                to="/aboutPage"
                 className="px-6 py-3 border-2 border-amber-900 text-red-500 font-medium rounded-full hover:bg-amber-900 hover:text-white transition inline-flex items-center"
               >
                 Learn More About Our Approach
                 <i className="fas fa-arrow-right ml-2"></i>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -126,7 +129,7 @@ const HomePage = () => {
             ].map((treatment, index) => (
               <div
                 key={index}
-                className="treatment-card bg-white text-gray-800 rounded-lg p-8 shadow-md transition cursor-pointer"
+                className="treatment-card bg-white text-gray-800 rounded-lg p-8 shadow-md transition"
               >
                 <div className={`treatment-icon text-4xl mb-4 text-amber-900`}>
                   <i className={treatment.icon}></i>
