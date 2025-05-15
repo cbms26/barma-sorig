@@ -8,19 +8,19 @@ function AboutPage() {
       <Header />
       <div className="about-page bg-gray-50">
         {/* Hero Section */}
-        <section className="hero bg-blue-600 text-white py-16">
+        <section className="hero bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-5xl font-bold mb-4">About Us</h1>
-            <p className="text-lg">
-              Learn more about our mission, values, and the team behind our
+            <h1 className="text-6xl font-extrabold mb-6">About Us</h1>
+            <p className="text-xl max-w-2xl mx-auto">
+              Discover our mission, values, and the passionate team behind our
               success.
             </p>
           </div>
         </section>
 
         {/* About Section */}
-        <section className="about-section py-16">
-          <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <section className="about-section py-20">
+          <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Left Section: Image */}
             <div className="about-image">
               <img
@@ -29,71 +29,217 @@ function AboutPage() {
                 className="rounded-lg shadow-lg w-full border-4 border-blue-600"
               />
             </div>
-
             {/* Right Section: Content */}
             <div className="about-content">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">
+              <h2 className="text-4xl font-bold text-gray-800 mb-6">
                 Who We Are
               </h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+              <p className="text-gray-700 leading-relaxed text-lg">
+                Barma Sorig Healing Center, Bhutan, in collaboration with Pure
+                Vision Sorig Healing & Research Center, Nepal, offers a variety
+                of wellness treatments for guests of all ages. Our main
+                treatments include traditional therapeutic gentle external
+                therapy (Jyamtse Ku-Nye) and Five Nectar (Amritas) Steam.
               </p>
-              <p className="text-gray-700 leading-relaxed">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
+              <p className="text-gray-700 leading-relaxed text-lg mt-4">
+                Experience the benefits of ancient traditional practices that
+                promote relaxation, general health, and well-being. Our
+                therapists are highly trained and dedicated to providing the
+                best care for our guests.
               </p>
             </div>
           </div>
         </section>
 
+        {/* Ku Nye Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold text-blue-700 mb-4">Ku Nye</h2>
+              <p className="text-gray-700 text-lg mb-4">
+                Ku Nye is a traditional Tibetan massage therapy that uses oils,
+                gentle pressure, and specialized techniques to balance the
+                body’s energies, promote healing, and restore well-being. It is
+                a core part of Sowa-Rigpa, the ancient science of healing.
+              </p>
+              <p className="text-gray-700 text-lg">
+                This therapy is known for its ability to relieve stress, improve
+                circulation, and support the body’s natural healing processes.
+                At Barma Sorig, our therapists are trained in authentic Ku Nye
+                methods to provide a deeply relaxing and restorative experience.
+              </p>
+            </div>
+            <div>
+              <img
+                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+                alt="Ku Nye Massage"
+                className="rounded-lg shadow-lg w-full border-4 border-blue-600"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Nine Breathing Exercise Section */}
+        <section className="py-16 bg-blue-50">
+          <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="order-2 md:order-1">
+              <img
+                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80"
+                alt="Nine Breathing Exercise"
+                className="rounded-lg shadow-lg w-full border-4 border-blue-600"
+              />
+            </div>
+            <div className="order-1 md:order-2">
+              <h2 className="text-3xl font-bold text-blue-700 mb-4">
+                Nine Breathing Exercise
+              </h2>
+              <p className="text-gray-700 text-lg mb-4">
+                The Nine Breathing Exercise is a powerful ancient technique used
+                to cleanse the body’s channels and calm the mind. Practiced
+                regularly, it helps reduce stress, increase focus, and promote
+                overall health.
+              </p>
+              <p className="text-gray-700 text-lg">
+                At Barma Sorig, we guide our guests through these breathing
+                exercises as part of our holistic approach to wellness, helping
+                you achieve balance and tranquility.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Course Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold text-blue-700 mb-4">Course</h2>
+              <p className="text-gray-700 text-lg mb-4">
+                We offer a range of courses on Sowa-Rigpa, Ku Nye massage, and
+                holistic wellness. Our courses are designed for both beginners
+                and practitioners who wish to deepen their knowledge and skills
+                in traditional healing arts.
+              </p>
+              <p className="text-gray-700 text-lg">
+                <span className="italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Pellentesque euismod, nisi eu consectetur consectetur, nisl
+                  nisi consectetur nisi, euismod euismod nisi nisi euismod.
+                </span>
+              </p>
+            </div>
+            <div>
+              <img
+                src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80"
+                alt="Course"
+                className="rounded-lg shadow-lg w-full border-4 border-blue-600"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Staff Organogram Section */}
+        <section className="py-16 bg-blue-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-blue-700 mb-8">
+              Staff Organogram
+            </h2>
+            <div className="bg-white rounded-lg shadow-lg p-8 flex flex-col md:flex-row items-center gap-8">
+              <img
+                src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=300&q=80"
+                alt="Staff Organogram"
+                className="rounded-lg border-4 border-blue-600 w-60 h-60 object-cover"
+              />
+              <div>
+                <p className="text-gray-700 text-lg mb-2">
+                  Our team is structured to provide the best care and service to
+                  our guests. Each member plays a vital role in ensuring a
+                  holistic and healing experience at Barma Sorig.
+                </p>
+                <p className="text-gray-700 text-lg">
+                  <span className="italic">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Etiam euismod, urna eu tincidunt consectetur, nisi nisl
+                    aliquam nunc, eget aliquam nisl nunc euismod nunc.
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Mission Section */}
-        <section className="mission-section bg-blue-50 py-16">
+        <section className="mission-section bg-gradient-to-r from-blue-100 to-blue-200 py-20">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold text-blue-600 mb-6">
+            <h2 className="text-4xl font-bold text-blue-600 mb-8">
               Our Mission
             </h2>
-            <p className="text-gray-700 leading-relaxed max-w-3xl mx-auto">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+            <p className="text-gray-700 leading-relaxed text-lg max-w-3xl mx-auto">
+              Our mission is to bring the ancient healing practices of
+              Sowa-Rigpa to the modern world, promoting health, balance, and
+              well-being for all. We aim to provide exceptional care and create
+              a space where guests can rejuvenate their body, mind, and spirit.
             </p>
           </div>
         </section>
 
+        {/* Heritage Section */}
+        <section className="heritage-section py-20">
+          <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* Left Section: Content */}
+            <div className="heritage-content">
+              <h2 className="text-4xl font-bold text-gray-800 mb-6">
+                Our Heritage
+              </h2>
+              <p className="text-gray-700 leading-relaxed text-lg">
+                Sowa-Rigpa, one of the oldest forms of healing, has been
+                practiced for over 2,500 years in the Tibet and Himalayan
+                regions. It focuses on balancing lifestyle and diet according to
+                individual body constitutions, treating not just symptoms but
+                the root causes of disorders.
+              </p>
+              <p className="text-gray-700 leading-relaxed text-lg mt-4">
+                Our treatments are rooted in this ancient tradition, offering a
+                unique healing system that promotes long and happy lives free
+                from disease.
+              </p>
+            </div>
+            {/* Right Section: Image */}
+            <div className="heritage-image">
+              <img
+                src="https://via.placeholder.com/600x400"
+                alt="Our Heritage"
+                className="rounded-lg shadow-lg w-full border-4 border-blue-600"
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Team Section */}
-        <section className="team-section py-16">
+        <section className="team-section bg-blue-50 py-20">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-blue-600 mb-8">
+            <h2 className="text-4xl font-bold text-center text-blue-600 mb-12">
               Meet Our Team
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
               {/* Team Member */}
-              {["John Doe", "Jane Smith", "Alex Johnson"].map((name, index) => (
+              {[
+                { name: "Dechen Pelden & Sangay Dorji", role: "Founder & CEO" },
+                { name: "Jane Smith", role: "Operations Manager" },
+                { name: "Alex Johnson", role: "Marketing Head" },
+              ].map((member, index) => (
                 <div
                   key={index}
-                  className="team-member text-center bg-white shadow-lg rounded-lg p-6"
+                  className="team-member text-center bg-white shadow-lg rounded-lg p-8"
                 >
                   <img
                     src="https://via.placeholder.com/150"
-                    alt={name}
-                    className="rounded-full mx-auto mb-4 w-32 h-32 object-cover border-4 border-blue-600"
+                    alt={member.name}
+                    className="rounded-full mx-auto mb-6 w-32 h-32 object-cover border-4 border-blue-600"
                   />
-                  <h3 className="text-xl font-semibold text-gray-800">
-                    {name}
+                  <h3 className="text-2xl font-semibold text-gray-800">
+                    {member.name}
                   </h3>
-                  <p className="text-gray-600">
-                    {index === 0
-                      ? "Founder & CEO"
-                      : index === 1
-                      ? "Operations Manager"
-                      : "Marketing Head"}
-                  </p>
+                  <p className="text-gray-600">{member.role}</p>
                 </div>
               ))}
             </div>

@@ -1,3 +1,4 @@
+// Run: node src/utils/migrateServices.js
 import { collection, setDoc, doc } from "firebase/firestore";
 import { db } from "../firebaseConfig.js";
 import servicesData from "../data/servicesData.js";

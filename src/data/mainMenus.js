@@ -45,7 +45,29 @@ const navigation = [
       },
     ],
   },
-  { name: "About", to: "/aboutPage" },
+  {
+    name: "About",
+    to: "/aboutPage",
+    hasDropdown: true,
+    dropdownItems: [
+      {
+        name: "Ku Nye",
+        to: "/kuNyeBlog",
+      },
+      {
+        name: "Nine Breathing Exercise",
+        to: "/",
+      },
+      {
+        name: "Course",
+        to: "/",
+      },
+      {
+        name: "Staff Organogram",
+        to: "/",
+      },
+    ],
+  },
   { name: "Contact", to: "/contactPage" },
 ];
 

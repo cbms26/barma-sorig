@@ -131,7 +131,7 @@ function ContactPage() {
               <div className="map mb-6">
                 <iframe
                   title="Google Map"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509374!2d-122.41941548468132!3d37.77492977975971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064df1c5b1f%3A0x4c8b8c7b0b7b0b0!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1681234567890!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3539.660813101938!2d89.63403127531538!3d27.479817176313816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e1938f16a623b3%3A0xdc9f6897422512d3!2sBarma%20Sorig%20Healing%20Center!5e0!3m2!1sen!2sau!4v1747217117839!5m2!1sen!2sau"
                   width="100%"
                   height="300"
                   style={{ border: 0 }}
@@ -141,16 +141,16 @@ function ContactPage() {
               </div>
               <div className="contact-details text-gray-700">
                 <p className="mb-2">
-                  <strong>Address:</strong> 123 Main Street, San Francisco, CA
+                  <strong>Address:</strong> Chubachu, Thimphu 11001, Bhutan
                 </p>
                 <p className="mb-2">
-                  <strong>Phone:</strong> (123) 456-7890
+                  <strong>Phone:</strong> +(975) 17248226
                 </p>
                 <p className="mb-2">
-                  <strong>Email:</strong> contact@barma-sorig.com
+                  <strong>Email:</strong> barmasorig2018@gmail.com
                 </p>
                 <p>
-                  <strong>Hours:</strong> Mon - Fri, 9:00 AM - 5:00 PM
+                  <strong>Hours:</strong> Mon - Sun, 9:00 AM - 8:00 PM
                 </p>
               </div>
             </div>

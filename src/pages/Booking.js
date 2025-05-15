@@ -94,7 +94,7 @@ function BookingPage() {
         ...prevData,
         [name]: value,
         price: selectedSubService ? selectedSubService.price : "",
-        benefits: selectedSubService ? selectedSubService.benefits : "",
+        benefits: selectedSubService ? selectedSubService.benefits || "" : "",
         duration: selectedSubService ? selectedSubService.duration : "",
       }));
     } else {
@@ -102,6 +102,30 @@ function BookingPage() {
         ...prevData,
         [name]: value,
       }));
+    }
+  };
+
+  // Function to send SMS to the client
+  const sendSMSToClient = async (bookingData) => {
+    try {
+      const response = await fetch("http://localhost:5000/send-sms", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to: bookingData.phone,
+          message: `Hello ${bookingData.name}, your booking for ${bookingData.service} (${bookingData.subService}) on ${bookingData.date} at ${bookingData.time} has been confirmed.`,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send SMS");
+      }
+
+      console.log("SMS sent to client successfully!");
+    } catch (error) {
+      console.error("Error sending SMS to client:", error);
     }
   };
 
@@ -133,6 +157,9 @@ function BookingPage() {
       // Add booking data to Firestore
       const bookingsCollection = collection(db, "bookings");
       await addDoc(bookingsCollection, bookingData);
+
+      // Send SMS to the client
+      await sendSMSToClient(bookingData);
 
       alert("Your booking has been submitted successfully!");
       console.log("Booking Details:", bookingData);
