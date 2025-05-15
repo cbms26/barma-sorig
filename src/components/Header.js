@@ -1,15 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-
-// import BookingPage from "../pages/Booking.js";
-
 import LogoWithName from "../assets/images/logo-with-name.png";
-
 import navigation from "../data/mainMenus.js";
-
-// import "../styles/Header.css";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -17,19 +10,14 @@ function classNames(...classes) {
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false); // State for "Services" dropdown
-  const [isScrolled, setIsScrolled] = useState(false); // State to track scrolling
+  const [openDropdown, setOpenDropdown] = useState(null); // Track which dropdown is open
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 0);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -81,7 +69,7 @@ export default function Header() {
                 {navigation.map((item) =>
                   item.hasDropdown ? (
                     <div key={item.name} className="relative group">
-                      {/* Services Tab */}
+                      {/* Dropdown Tab */}
                       <Link
                         to={item.to}
                         className={classNames(
@@ -96,7 +84,6 @@ export default function Header() {
                       >
                         {item.name}
                       </Link>
-
                       {/* Dropdown Menus */}
                       <div className="absolute left-0 top-full hidden w-96 origin-top-left rounded-md bg-white py-4 px-6 shadow-lg ring-1 ring-black/5 group-hover:block z-10">
                         <div
@@ -106,31 +93,18 @@ export default function Header() {
                               : "grid grid-cols-2 gap-4"
                           }
                         >
-                          {item.dropdownItems.map((mainService) => (
-                            <div key={mainService.name}>
-                              {item.name === "About" ? (
-                                // Only show links, no headings, in a column
-                                mainService.subServices ? (
-                                  mainService.subServices.map((subService) => (
-                                    <Link
-                                      key={subService.name}
-                                      to={subService.to}
-                                      className="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-700 hover:text-white rounded-md"
-                                    >
-                                      {subService.name}
-                                    </Link>
-                                  ))
-                                ) : (
-                                  <Link
-                                    to={mainService.to}
-                                    className="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-700 hover:text-white rounded-md"
-                                  >
-                                    {mainService.name}
-                                  </Link>
-                                )
-                              ) : (
-                                // For other menus, show heading and links in grid
-                                <>
+                          {item.name === "About"
+                            ? item.dropdownItems.map((mainService) => (
+                                <Link
+                                  key={mainService.name}
+                                  to={mainService.to}
+                                  className="block px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-700 hover:text-white rounded-md"
+                                >
+                                  {mainService.name}
+                                </Link>
+                              ))
+                            : item.dropdownItems.map((mainService) => (
+                                <div key={mainService.name}>
                                   <h3 className="text-gray-700 font-semibold text-sm mb-2">
                                     {mainService.name}
                                   </h3>
@@ -156,10 +130,8 @@ export default function Header() {
                                       {mainService.name}
                                     </Link>
                                   )}
-                                </>
-                              )}
-                            </div>
-                          ))}
+                                </div>
+                              ))}
                         </div>
                       </div>
                     </div>
@@ -202,32 +174,45 @@ export default function Header() {
                 <div key={item.name}>
                   <button
                     onClick={() =>
-                      setIsServicesDropdownOpen(!isServicesDropdownOpen)
+                      setOpenDropdown(
+                        openDropdown === item.name ? null : item.name
+                      )
                     }
                     className="w-full text-left text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium"
                   >
                     {item.name}
                   </button>
-                  {isServicesDropdownOpen && (
+                  {openDropdown === item.name && (
                     <div className="pl-4">
-                      {item.dropdownItems.map((mainService) => (
-                        <div key={mainService.name}>
-                          <h3 className="text-gray-400 font-semibold text-sm mb-2">
-                            {mainService.name}
-                          </h3>
-                          <div className="space-y-1">
-                            {mainService.subServices.map((subService) => (
-                              <Link
-                                key={subService.name}
-                                to={subService.to}
-                                className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
-                              >
-                                {subService.name}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
+                      {item.name === "About"
+                        ? item.dropdownItems.map((mainService) => (
+                            <Link
+                              key={mainService.name}
+                              to={mainService.to}
+                              className="block px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
+                            >
+                              {mainService.name}
+                            </Link>
+                          ))
+                        : item.dropdownItems.map((mainService) => (
+                            <div key={mainService.name}>
+                              <h3 className="text-gray-400 font-semibold text-sm mb-2">
+                                {mainService.name}
+                              </h3>
+                              <div className="space-y-1">
+                                {mainService.subServices &&
+                                  mainService.subServices.map((subService) => (
+                                    <Link
+                                      key={subService.name}
+                                      to={subService.to}
+                                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
+                                    >
+                                      {subService.name}
+                                    </Link>
+                                  ))}
+                              </div>
+                            </div>
+                          ))}
                     </div>
                   )}
                 </div>
