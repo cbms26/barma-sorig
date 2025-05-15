@@ -10,14 +10,34 @@
 
 # production
 /build
+/dist
+
+# Firebase
+firebase-debug.log
+firebase-error.log
 
 # misc
 .DS_Store
+.env
 .env.local
+.env.development
 .env.development.local
 .env.test.local
+.env.production
 .env.production.local
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Twilio
+twilio-debug.log
+
+# IDE files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
