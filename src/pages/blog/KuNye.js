@@ -2,6 +2,8 @@ import React from "react";
 import Header from "../../components/Header.js";
 import Footer from "../../components/Footer.js";
 
+import kuNyeImage from "../../assets/images/ku-Nye-blog.jpg";
+
 export default function KuNye() {
   return (
     <>
@@ -10,13 +12,18 @@ export default function KuNye() {
         <div className="max-w-3xl mx-auto px-6">
           <header className="mb-12 text-center">
             <h1 className="text-5xl font-extrabold text-blue-800 tracking-tight drop-shadow-lg mb-4 font-serif">
-              Ku-Nye – Traditional Sowa Rigpa Healing Therapy
+              Ku-Nye - Traditional Sowa Rigpa Healing Therapy
             </h1>
+            <img
+              className="mx-auto mb-6 pt-6 rounded-xl shadow-lg max-h-72 object-cover"
+              src={kuNyeImage}
+              alt="Ku-Nye Healing Therapy"
+            />
             <div className="flex justify-center mb-6">
               <span className="inline-block w-24 h-1 rounded bg-gradient-to-r from-blue-400 via-teal-400 to-blue-400"></span>
             </div>
             <p className="text-lg text-gray-600 italic">
-              Ancient wisdom, modern healing – a journey through touch and
+              Ancient wisdom, modern healing - a journey through touch and
               tradition.
             </p>
           </header>
@@ -167,7 +174,7 @@ export default function KuNye() {
                   <li>Feel soft, light, and relaxed</li>
                   <li>Relief from long-term aches</li>
                   <li>Increased energy</li>
-                  <li>Enjoy a good night’s sleep</li>
+                  <li>Enjoy a good night's sleep</li>
                 </ul>
               </div>
             </div>

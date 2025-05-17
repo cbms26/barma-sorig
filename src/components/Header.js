@@ -98,7 +98,7 @@ export default function Header() {
                                 <Link
                                   key={mainService.name}
                                   to={mainService.to}
-                                  className="block px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-700 hover:text-white rounded-md"
+                                  className="block px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:border-l-4 hover:border-blue-600 rounded transition-all duration-75"
                                 >
                                   {mainService.name}
                                 </Link>
@@ -115,7 +115,7 @@ export default function Header() {
                                           <Link
                                             key={subService.name}
                                             to={subService.to}
-                                            className="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-700 hover:text-white rounded-md"
+                                            className="block px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:border-l-4 hover:border-blue-600 rounded transition-all duration-75"
                                           >
                                             {subService.name}
                                           </Link>

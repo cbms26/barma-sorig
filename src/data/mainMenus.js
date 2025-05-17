@@ -56,7 +56,7 @@ const navigation = [
       },
       {
         name: "Nine Breathing Exercise",
-        to: "/",
+        to: "/nineBreathingExerciseBlog",
       },
       {
         name: "Course",

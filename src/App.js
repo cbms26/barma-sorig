@@ -13,6 +13,7 @@ import KuNyeBlog from "./pages/blog/KuNye.js";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import NineBreathingExerciseBlog from "./pages/blog/NineBreathingExercise.js";
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
         <Route path="/aboutPage" element={<AboutPage />} />
         <Route path="/contactPage" element={<ContactPage />} />
         <Route path="/kuNyeBlog" element={<KuNyeBlog />} />
+        <Route
+          path="/nineBreathingExerciseBlog"
+          element={<NineBreathingExerciseBlog />}
+        />
         {/* Add more routes here as needed */}
       </Routes>
     </Router>
