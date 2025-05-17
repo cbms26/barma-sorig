@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/barma-sorig/static/css/main.0f6a5bf9.css",
-    "main.js": "/barma-sorig/static/js/main.e0e677dc.js",
+    "main.css": "/barma-sorig/static/css/main.0d0f6e14.css",
+    "main.js": "/barma-sorig/static/js/main.3d775953.js",
     "static/js/453.59619da6.chunk.js": "/barma-sorig/static/js/453.59619da6.chunk.js",
     "static/media/barma-sorig-ad.mp4": "/barma-sorig/static/media/barma-sorig-ad.4f6e049a2ecc18220aea.mp4",
     "static/media/hero-bg.webp": "/barma-sorig/static/media/hero-bg.45a505c8565627785864.webp",
@@ -14,12 +14,12 @@
     "static/media/slick.ttf": "/barma-sorig/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/barma-sorig/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/barma-sorig/index.html",
-    "main.0f6a5bf9.css.map": "/barma-sorig/static/css/main.0f6a5bf9.css.map",
-    "main.e0e677dc.js.map": "/barma-sorig/static/js/main.e0e677dc.js.map",
+    "main.0d0f6e14.css.map": "/barma-sorig/static/css/main.0d0f6e14.css.map",
+    "main.3d775953.js.map": "/barma-sorig/static/js/main.3d775953.js.map",
     "453.59619da6.chunk.js.map": "/barma-sorig/static/js/453.59619da6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0f6a5bf9.css",
-    "static/js/main.e0e677dc.js"
+    "static/css/main.0d0f6e14.css",
+    "static/js/main.3d775953.js"
   ]
 }
