@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { fetchBTNtoUSDRate, convertBTNtoUSD } from "../utils/currencyUtils.js";
 
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
@@ -15,6 +16,8 @@ function ServicesPage() {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const categoryRefs = useRef({}); // Store refs for each category
+
+  const [usdPrices, setUsdPrices] = useState({});
 
   useEffect(() => {
     // Parse query parameters
@@ -60,6 +63,53 @@ function ServicesPage() {
         subServiceTitle
       )}&price=${encodeURIComponent(subServicePrice)}`
     );
+  };
+
+  // Handler for Convert to USD
+  const handleConvertToUSD = async (usdKey, btnAmount) => {
+    // Extract the lowest numeric value from the price string
+    let numericBTN = 0;
+    if (typeof btnAmount === "number") {
+      numericBTN = btnAmount;
+    } else if (typeof btnAmount === "string") {
+      // Remove commas, split on '-', and get the first number
+      const cleaned = btnAmount.replace(/,/g, "");
+      const match = cleaned.match(/\d+(\.\d+)?/g); // Get all numbers
+      if (match && match.length > 0) {
+        numericBTN = parseFloat(match[0]);
+      }
+    }
+
+    if (!numericBTN || isNaN(numericBTN)) {
+      setUsdPrices((prev) => ({
+        ...prev,
+        [usdKey]: { usd: null, loading: false, error: "Invalid price" },
+      }));
+      return;
+    }
+
+    setUsdPrices((prev) => ({
+      ...prev,
+      [usdKey]: { usd: null, loading: true, error: null },
+    }));
+
+    try {
+      const rate = await fetchBTNtoUSDRate();
+      const usd = convertBTNtoUSD(numericBTN, rate);
+      setUsdPrices((prev) => ({
+        ...prev,
+        [usdKey]: { usd, loading: false, error: null },
+      }));
+    } catch (error) {
+      setUsdPrices((prev) => ({
+        ...prev,
+        [usdKey]: {
+          usd: null,
+          loading: false,
+          error: "Conversion failed",
+        },
+      }));
+    }
   };
 
   return (
@@ -151,42 +201,81 @@ function ServicesPage() {
                     <div className="category-heading bg-amber-100 text-amber-900 px-4 py-2 rounded-md shadow-md mb-4">
                       <h4 className="text-2xl font-bold">{category}</h4>
                     </div>
+
                     {/* Render sub-services under the category */}
-                    {subServices.map((subService, subIndex) => (
-                      <div
-                        key={subIndex}
-                        className="sub-service-item border-b border-gray-300 pb-4 last:border-b-0"
-                      >
-                        <h5 className="text-xl font-medium text-gray-800">
-                          {subService.title}
-                        </h5>
-                        {subService.benefits && (
-                          <p className="text-gray-600">
-                            <strong>Benefits:</strong> {subService.benefits}
-                          </p>
-                        )}
-                        {subService.duration && (
-                          <p className="text-gray-600">
-                            <strong>Duration:</strong> {subService.duration}
-                          </p>
-                        )}
-                        <p className="text-gray-800 font-semibold">
-                          <strong>Price:</strong> {subService.price}
-                        </p>
-                        <button
-                          className="bg-blue-500 text-white px-6 py-2 rounded mt-4 hover:bg-blue-600 transition-all"
-                          onClick={() =>
-                            handleBookNow(
-                              servicesData[activeService].title,
-                              subService.title,
-                              subService.price
-                            )
-                          }
+                    {subServices.map((subService, subIndex) => {
+                      const usdKey = `${category}-${subIndex}`;
+                      return (
+                        <div
+                          key={usdKey}
+                          className="sub-service-item border-b border-gray-300 pb-4 last:border-b-0"
                         >
-                          Book Now
-                        </button>
-                      </div>
-                    ))}
+                          <h5 className="text-xl font-medium text-gray-800">
+                            {subService.title}
+                          </h5>
+                          {subService.benefits && (
+                            <p className="text-gray-600">
+                              <strong>Benefits:</strong> {subService.benefits}
+                            </p>
+                          )}
+                          {subService.duration && (
+                            <p className="text-gray-600">
+                              <strong>Duration:</strong> {subService.duration}
+                            </p>
+                          )}
+                          <p className="text-gray-800 font-semibold">
+                            <strong>Price:</strong> {subService.price}
+                          </p>
+                          {/* Show USD value if available */}
+                          <div className="px-10 mt-0">
+                            {usdPrices[usdKey]?.loading && (
+                              <p className="text-blue-500 text-sm mt-2">
+                                Converting...
+                              </p>
+                            )}
+                            {usdPrices[usdKey]?.usd && (
+                              <p className="text-green-600 text-sm mt-2">
+                                ≈ ${usdPrices[usdKey].usd} USD
+                                {typeof subService.price === "string" &&
+                                  subService.price.includes("-") && (
+                                    <span className="ml-2 text-xs text-gray-500">
+                                      (minimum)
+                                    </span>
+                                  )}
+                              </p>
+                            )}
+                            {usdPrices[usdKey]?.error && (
+                              <p className="text-red-600 text-sm mt-2">
+                                {usdPrices[usdKey].error}
+                              </p>
+                            )}
+                          </div>
+                          <div className="flex items-center gap-4 mt-4">
+                            <button
+                              className="bg-blue-600 text-white px-5 py-2 rounded-md shadow-sm font-semibold text-sm hover:bg-blue-700 transition"
+                              onClick={() =>
+                                handleBookNow(
+                                  servicesData[activeService].title,
+                                  subService.title,
+                                  subService.price
+                                )
+                              }
+                            >
+                              Book Now
+                            </button>
+                            <span className="h-6 border-l border-gray-300 mx-2"></span>
+                            <button
+                              className="px-4 py-2 rounded-md border border-blue-600 text-blue-600 bg-white font-semibold text-xs shadow-sm hover:bg-blue-50 transition"
+                              onClick={() =>
+                                handleConvertToUSD(usdKey, subService.price)
+                              }
+                            >
+                              Convert to USD
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 ))}
               </div>
