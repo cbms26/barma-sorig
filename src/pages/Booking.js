@@ -116,6 +116,12 @@ function BookingPage() {
         body: JSON.stringify({
           to: bookingData.phone,
           message: `Hello ${bookingData.name}, your booking for ${bookingData.service} (${bookingData.subService}) on ${bookingData.date} at ${bookingData.time} has been confirmed.`,
+          // Send these fields for the owner SMS
+          name: bookingData.name,
+          service: bookingData.service,
+          subService: bookingData.subService,
+          date: bookingData.date,
+          time: bookingData.time,
         }),
       });
 
@@ -123,9 +129,37 @@ function BookingPage() {
         throw new Error("Failed to send SMS");
       }
 
-      console.log("SMS sent to client successfully!");
+      console.log("SMS sent to client and owner successfully!");
     } catch (error) {
-      console.error("Error sending SMS to client:", error);
+      console.error("Error sending SMS:", error);
+    }
+  };
+
+  //Function to send SMS to the owner
+  const sendSMSToOwner = async (bookingData) => {
+    try {
+      const response = await fetch("http://localhost:5000/send-sms", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to: process.env.REACT_APP_OWNER_PHONE_NUMBER, // or hardcode owner's number
+          message: `New booking:
+Name: ${bookingData.name}
+Service: ${bookingData.service} (${bookingData.subService})
+Date: ${bookingData.date}
+Time: ${bookingData.time}`,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send SMS to owner");
+      }
+
+      console.log("SMS sent to owner successfully!");
+    } catch (error) {
+      console.error("Error sending SMS to owner:", error);
     }
   };
 

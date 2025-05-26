@@ -154,9 +154,9 @@ function ServicesPage() {
                     <h3 className="text-xl font-semibold text-gray-800 mb-2">
                       {service.title}
                     </h3>
-                    <p className="text-gray-600">
+                    {/* <p className="text-gray-600">
                       {service.subServices.length} Sub-services available
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               ))}

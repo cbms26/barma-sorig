@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 
@@ -67,14 +68,18 @@ function AboutPage() {
               </p>
               <p className="text-gray-700 text-lg">
                 This therapy is known for its ability to relieve stress, improve
-                circulation, and support the body’s natural healing processes.
-                At Barma Sorig, our therapists are trained in authentic Ku Nye
-                methods to provide a deeply relaxing and restorative experience.
+                circulation, and support the body’s natural healing processes...
               </p>
+              <Link
+                to="/kuNyeBlog"
+                className="inline-block mt-4 text-blue-600 hover:underline font-semibold"
+              >
+                Learn more
+              </Link>
             </div>
             <div>
               <img
-                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+                src="https://images.unsplash.com/photo-1506744038136-4627e3834b3fb?auto=format&fit=crop&w=600&q=80"
                 alt="Ku Nye Massage"
                 className="rounded-lg shadow-lg w-full border-4 border-blue-600"
               />
@@ -105,8 +110,14 @@ function AboutPage() {
               <p className="text-gray-700 text-lg">
                 At Barma Sorig, we guide our guests through these breathing
                 exercises as part of our holistic approach to wellness, helping
-                you achieve balance and tranquility.
+                you achieve balance and tranquility...
               </p>
+              <Link
+                to="/nineBreathingExerciseBlog"
+                className="inline-block mt-4 text-blue-600 hover:underline font-semibold"
+              >
+                Learn more
+              </Link>
             </div>
           </div>
         </section>
