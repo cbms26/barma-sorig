@@ -2,16 +2,19 @@ import React from "react";
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 
+import ceo from "../assets/images/CEO.jpeg";
+import generalSupervisor from "../assets/images/General Supervisor.jpeg";
+
 function AboutPage() {
   return (
     <>
       <Header />
       <div className="about-page bg-gray-50">
         {/* Hero Section */}
-        <section className="hero bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+        <section className="hero bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-6xl font-extrabold mb-6">About Us</h1>
-            <p className="text-xl max-w-2xl mx-auto">
+            <h1 className="text-5xl font-bold mb-4">About Us</h1>
+            <p className="text-lg">
               Discover our mission, values, and the passionate team behind our
               success.
             </p>
@@ -220,19 +223,22 @@ function AboutPage() {
             <h2 className="text-4xl font-bold text-center text-blue-600 mb-12">
               Meet Our Team
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-12">
               {/* Team Member */}
               {[
-                { name: "Dechen Pelden & Sangay Dorji", role: "Founder & CEO" },
-                { name: "Jane Smith", role: "Operations Manager" },
-                { name: "Alex Johnson", role: "Marketing Head" },
+                { name: "Sangay Dorji", role: "CEO / Proprietor", img: ceo },
+                {
+                  name: "Dechen Pelden",
+                  role: "General Supervisor / Senior Ku Nye Therapist",
+                  img: generalSupervisor,
+                },
               ].map((member, index) => (
                 <div
                   key={index}
                   className="team-member text-center bg-white shadow-lg rounded-lg p-8"
                 >
                   <img
-                    src="https://via.placeholder.com/150"
+                    src={member.img}
                     alt={member.name}
                     className="rounded-full mx-auto mb-6 w-32 h-32 object-cover border-4 border-blue-600"
                   />
