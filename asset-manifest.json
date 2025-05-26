@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/barma-sorig/static/css/main.8420c49d.css",
-    "main.js": "/barma-sorig/static/js/main.4c7ad0e1.js",
+    "main.css": "/barma-sorig/static/css/main.d8e786b5.css",
+    "main.js": "/barma-sorig/static/js/main.d3857be1.js",
     "static/js/453.59619da6.chunk.js": "/barma-sorig/static/js/453.59619da6.chunk.js",
     "static/media/barma-sorig-ad.mp4": "/barma-sorig/static/media/barma-sorig-ad.4f6e049a2ecc18220aea.mp4",
     "static/media/hero-bg.webp": "/barma-sorig/static/media/hero-bg.45a505c8565627785864.webp",
@@ -9,18 +9,20 @@
     "static/media/video-thumbnail.jpg": "/barma-sorig/static/media/video-thumbnail.ef0fd8c580103e176324.jpg",
     "static/media/ku-Nye-blog.jpg": "/barma-sorig/static/media/ku-Nye-blog.25d1489fb61a584dee26.jpg",
     "static/media/logo-with-name.png": "/barma-sorig/static/media/logo-with-name.044e0ecc7ee2a4f519e0.png",
+    "static/media/CEO.jpeg": "/barma-sorig/static/media/CEO.72d87747e4e00111c7ab.jpeg",
     "static/media/spa-service.jpg": "/barma-sorig/static/media/spa-service.8e8eac618612aa338af3.jpg",
+    "static/media/General Supervisor.jpeg": "/barma-sorig/static/media/General Supervisor.590b7e1539288b66301c.jpeg",
     "static/media/slick.svg": "/barma-sorig/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/barma-sorig/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/barma-sorig/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/barma-sorig/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/barma-sorig/index.html",
-    "main.8420c49d.css.map": "/barma-sorig/static/css/main.8420c49d.css.map",
-    "main.4c7ad0e1.js.map": "/barma-sorig/static/js/main.4c7ad0e1.js.map",
+    "main.d8e786b5.css.map": "/barma-sorig/static/css/main.d8e786b5.css.map",
+    "main.d3857be1.js.map": "/barma-sorig/static/js/main.d3857be1.js.map",
     "453.59619da6.chunk.js.map": "/barma-sorig/static/js/453.59619da6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8420c49d.css",
-    "static/js/main.4c7ad0e1.js"
+    "static/css/main.d8e786b5.css",
+    "static/js/main.d3857be1.js"
   ]
 }
