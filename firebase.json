@@ -1,0 +1,36 @@
+{
+  "hosting": {
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+ "rewrites": [
+      { "source": "/manifest.json", "destination": "/manifest.json" },
+      { "source": "/favicon.ico", "destination": "/favicon.ico" },
+      { "source": "/asset-manifest.json", "destination": "/asset-manifest.json" },
+      { "source": "/logo192.png", "destination": "/logo192.png" },
+      { "source": "/logo512.png", "destination": "/logo512.png" },
+      { "source": "/robots.txt", "destination": "/robots.txt" },
+      { "source": "/static/**", "destination": "/static/**" },
+      { "source": "**", "destination": "/index.html" }
+    ]
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint"
+      ]
+    }
+  ]
+}
