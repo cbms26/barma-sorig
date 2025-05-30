@@ -46,10 +46,10 @@ app.post("/send-sms", async (req, res) => {
     const ownerMsg =
       ownerMessage ||
       `New booking:
-Name: ${name || "N/A"}
-Service: ${service || "N/A"}${subService ? ` - ${subService}` : ""}
-Date: ${date || "N/A"}
-Time: ${time || "N/A"}`;
+        Name: ${name || "N/A"}
+        Service: ${service || "N/A"}${subService ? ` - ${subService}` : ""}
+        Date: ${date || "N/A"}
+        Time: ${time || "N/A"}`;
 
     // Send SMS to owner
     const ownerResponse = await client.messages.create({
