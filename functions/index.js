@@ -26,7 +26,7 @@ exports.sendSms = onRequest(async (req, res) => {
     return;
   }
 
-  let { to, message, ownerMessage, name, service, subService, date, time } =
+  const { to, message, ownerMessage, name, service, subService, date, time } =
     req.body;
 
   // Format client number
