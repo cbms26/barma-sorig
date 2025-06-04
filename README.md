@@ -1,31 +1,33 @@
 # Barma Sorig Healing Centre
 
-Welcome to the **Barma Sorig Healing Centre** repository. This project brings the ancient Barma-Sorig tradition of holistic healing from the Himalayas into a modern web application. It is designed to introduce, manage, and promote the center’s unique therapies, treatments, and wellness services, both for practitioners and for guests seeking holistic wellbeing.
+Welcome to the **Barma Sorig Healing Centre** repository!  
+This project was created and is maintained by [cbms26](https://github.com/cbms26) for our family business in Bhutan. It showcases and manages our traditional healing and wellness services.
 
 ---
 
 ## 🌿 About Barma Sorig
 
-**Barma-Sorig** healing combines over a thousand years of Tibetan medical knowledge and spiritual wisdom. Our center, based in Bhutan and in collaboration with Pure Vision Sorig Healing & Research Center (Nepal), offers a variety of treatments rooted in tradition, including:
+**Barma Sorig** healing combines over a thousand years of Tibetan medical knowledge and spiritual wisdom.  
+Our center, in collaboration with Pure Vision Sorig Healing & Research Center (Nepal), offers a wide variety of treatments rooted in tradition, including:
 
 - **Traditional Ku Nye Massage:** Ancient Tibetan oil massage for detoxification, relaxation, and energy flow.
 - **Five Nectar (Amrita) Herbal Steam:** Herbal steam therapy for rejuvenation and toxin elimination.
 - **Therapeutic Gentle External Therapies (Jyamtse Ku-Nye)**
-- **Salon & Spa Services:** Including massages, facials, herbal baths, waxing, hair and brow care, and more.
+- **Salon & Spa Services:** Massages, facials, herbal baths, waxing, hair and brow care, and more.
 - **Wellness Guidance:** Diet, herbs, seasonal health advice, and guided breathing exercises.
 
-Our aim is to provide **personalized treatments** that address physical, emotional, and energetic balance, guided by highly trained therapists.
+Our treatments are personalized and delivered by highly trained therapists to address physical, emotional, and energetic balance for holistic wellbeing.
 
 ---
 
-## 🧑‍💻 Project Structure
+## 🏗️ Project Structure
 
-This repository is organized as a **monorepo** with the following components:
+This repository is a **monorepo** composed of:
 
 - **Frontend (React + Tailwind CSS):**  
   Main user-facing website and booking interface (`src/`, `public/`)
 - **Cloud Functions (Node.js, Firebase):**  
-  Backend logic for notifications, data processing, etc. (`functions/`)
+  Backend logic for notifications and data processing (`functions/`)
 - **SMS Backend:**  
   Node.js Express server for SMS integration, powered by Twilio (`sms-backend/`)
 - **Firebase Hosting & Configuration:**  
@@ -45,14 +47,12 @@ This repository is organized as a **monorepo** with the following components:
 ### Installation
 
 1. **Clone the repository:**
-
    ```bash
    git clone https://github.com/cbms26/barma-sorig.git
    cd barma-sorig
    ```
 
 2. **Install dependencies:**
-
    ```bash
    npm install
    cd functions && npm install
@@ -61,12 +61,10 @@ This repository is organized as a **monorepo** with the following components:
    ```
 
 3. **Configure Firebase:**
-
-   - Edit `.firebaserc` and `firebase.json` if needed.
-   - Set up environment variables for sensitive keys (see `.env.example` if available).
+   - Edit `.firebaserc` and `firebase.json` as needed.
+   - Set up environment variables for sensitive keys.
 
 4. **Start the development server:**
-
    ```bash
    npm start
    ```
@@ -86,13 +84,13 @@ This repository is organized as a **monorepo** with the following components:
 
 ## 🗂️ Key Scripts
 
-| Command                | Description                                         |
-|------------------------|-----------------------------------------------------|
-| `npm start`            | Start the React development server                  |
-| `npm run build`        | Build the frontend for production                   |
-| `npm run deploy`       | Deploy to Firebase Hosting                          |
-| `cd functions && npm run serve` | Start Firebase functions locally           |
-| `cd sms-backend && node index.js` | Run the SMS backend server             |
+| Command                          | Description                                         |
+|-----------------------------------|-----------------------------------------------------|
+| `npm start`                      | Start the React development server                  |
+| `npm run build`                   | Build the frontend for production                   |
+| `npm run deploy`                  | Deploy to Firebase Hosting                          |
+| `cd functions && npm run serve`   | Start Firebase functions locally                    |
+| `cd sms-backend && node index.js` | Run the SMS backend server                          |
 
 ---
 
@@ -119,21 +117,26 @@ This repository is organized as a **monorepo** with the following components:
 
 ---
 
-## 🤝 Contributing
+## 🏠 About This Project
 
-Contributions are welcome! If you have suggestions, ideas, or want to help improve the center’s digital experience, please open an issue or submit a pull request.
-
----
-
-## 📞 Contact
-
-For more information about Barma Sorig Healing Centre or for technical support, please reach out via the [issues page](https://github.com/cbms26/barma-sorig/issues) or contact the project maintainers.
+This project was developed by cbms26 for the Barma Sorig Healing Centre, a family business in Bhutan.  
+It is made public for transparency and learning purposes. If you would like to use any part of this code or collaborate, please contact the repository owner.
 
 ---
 
 ## 📜 License
 
-This project is for informational and wellness purposes. See `LICENSE` file for details.
+**No open source license is provided at this time.**  
+You are welcome to view the code and learn from it.  
+For any use, modification, or distribution beyond personal learning, please contact the author for permission.
+
+---
+
+## 📞 Contact
+
+For business or technical inquiries, contact:  
+**Barma Sorig Healing Centre**  
+GitHub: [cbms26](https://github.com/cbms26)
 
 ---
 
