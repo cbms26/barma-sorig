@@ -7,15 +7,26 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
-const { onRequest } = require("firebase-functions/v2/https");
+// // For Checking
+// const {onRequest} = require("firebase-functions/v2/https");
+
+// exports.helloTest = onRequest((req, res) => {
+//   res.send("✅ Functions are working!");
+// });
+
+
+const {onRequest} = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
 const twilio = require("twilio");
 
 // Use Firebase environment config for secrets
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
-const ownerNumber = process.env.OWNER_PHONE_NUMBER || "+610410958270";
+const functions = require("firebase-functions");
+
+const accountSid = functions.config().twilio.sid;
+const authToken = functions.config().twilio.token;
+const twilioPhoneNumber = functions.config().twilio.phone;
+const ownerNumber = functions.config().twilio.owner || "+97517248226";
+
 
 // Initialize Twilio client
 const client = twilio(accountSid, authToken);
@@ -26,13 +37,13 @@ exports.sendSms = onRequest(async (req, res) => {
     return;
   }
 
-  const { to, message, ownerMessage, name, service, subService, date, time } =
+  const {to, message, ownerMessage, name, service, subService, date, time} =
     req.body;
 
-  // Format client number
+  // Format client number for Bhutan (+975)
   let clientNumber = to;
   if (!clientNumber.startsWith("+")) {
-    clientNumber = `+61${clientNumber.replace(/^0/, "")}`;
+    clientNumber = `+975${clientNumber.replace(/^0/, "")}`;
   }
 
   try {
@@ -66,14 +77,6 @@ exports.sendSms = onRequest(async (req, res) => {
     });
   } catch (err) {
     logger.error("Error sending sms:", err);
-    res.status(500).json({ success: false, err: err.message });
+    res.status(500).json({success: false, err: err.message});
   }
 });
-
-// Create and deploy your first functions
-// https://firebase.google.com/docs/functions/get-started
-
-// exports.helloWorld = onRequest((request, response) => {
-//   logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });

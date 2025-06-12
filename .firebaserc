@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "barma-sorig"
-  }
+    "default": "barma-sorig",
+    "staging": "barma-sorig"
+  },
+  "targets": {},
+  "etags": {}
 }
