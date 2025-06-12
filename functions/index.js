@@ -25,7 +25,7 @@ const functions = require("firebase-functions");
 const accountSid = functions.config().twilio.sid;
 const authToken = functions.config().twilio.token;
 const twilioPhoneNumber = functions.config().twilio.phone;
-const ownerNumber = functions.config().twilio.owner || "+97517248226";
+const ownerNumber = functions.config().twilio.owner;
 
 
 // Initialize Twilio client
