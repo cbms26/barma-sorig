@@ -26,12 +26,20 @@ function AboutPage() {
         <section className="about-section py-20">
           <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Left Section: Image */}
-            <div className="about-image">
-              <img
-                src="https://via.placeholder.com/600x400"
-                alt="About Us"
-                className="rounded-lg shadow-lg w-full border-4 border-blue-600"
-              />
+            <div className="ads-content ">
+              <video
+                className="ads-video rounded-lg"
+                controls
+                controlsList="nodownload"
+                width="100%"
+                poster="https://barma-sorig-assets.s3.ap-southeast-2.amazonaws.com/barma-sorig-ads-thumbnail.png"
+              >
+                <source
+                  src="https://barma-sorig-assets.s3.ap-southeast-2.amazonaws.com/barma-sorig-ads.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video.
+              </video>
             </div>
             {/* Right Section: Content */}
             <div className="about-content">
