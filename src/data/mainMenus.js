@@ -1,5 +1,5 @@
 const navigation = [
-  { name: "Home", to: "/homePage" },
+  { name: "Home", to: "/" },
   {
     name: "Services",
     to: "/servicesPage",

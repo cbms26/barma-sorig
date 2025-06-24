@@ -24,24 +24,20 @@ const HomePage = () => {
         {/* Content */}
         <div className="container mx-auto px-4 py-6 bg-gray-900 bg-opacity-60 text-center text-white relative z-10">
           <h1 className="text-sky-500 text-4xl md:text-6xl font-bold mb-6 serif">
-            Traditional Ku-Nye for Modern Life
+            Barma Sorig Healing Center
           </h1>
           <p className="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
-            Experience the transformative power of traditional Barma-Sorig
-            therapies to restore balance and harmony to your body and mind.
+            &ldquo;Traditional <i>Ku-Nye</i> (massage) Treatment &amp; more, for
+            Health &amp; Well-being&ldquo;
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+
+          <div className="flex items-center justify-center gap-2 sm:gap-4">
+            <p className="text-xl font-medium">Treat Yourself —</p>
             <Link
               to="/servicesPage"
-              className="px-8 py-4 bg-amber-900 text-white font-medium rounded-full hover:bg-amber-800 transition btn-primary text-lg"
+              className="px-6 py-3 bg-amber-900 text-white font-medium rounded-full hover:bg-amber-800 transition text-2xl"
             >
-              Explore Treatments
-            </Link>
-            <Link
-              to="/aboutPage"
-              className="px-8 py-4 bg-white text-red-600 font-medium rounded-full hover:bg-gray-300 transition text-lg"
-            >
-              Meet Our Healers
+              Book Now
             </Link>
           </div>
         </div>
