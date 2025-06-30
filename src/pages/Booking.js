@@ -108,7 +108,7 @@ function BookingPage() {
   // Function to send SMS to the client
   const sendSMSToClient = async (bookingData) => {
     try {
-      const response = await fetch("http://localhost:5000/send-sms", {
+      const response = await fetch("https://sendsms-c44qbaeuaa-uc.a.run.app", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -132,34 +132,6 @@ function BookingPage() {
       console.log("SMS sent to client and owner successfully!");
     } catch (error) {
       console.error("Error sending SMS:", error);
-    }
-  };
-
-  //Function to send SMS to the owner
-  const sendSMSToOwner = async (bookingData) => {
-    try {
-      const response = await fetch("http://localhost:5000/send-sms", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          to: process.env.REACT_APP_OWNER_PHONE_NUMBER, // or hardcode owner's number
-          message: `New booking:
-Name: ${bookingData.name}
-Service: ${bookingData.service} (${bookingData.subService})
-Date: ${bookingData.date}
-Time: ${bookingData.time}`,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to send SMS to owner");
-      }
-
-      console.log("SMS sent to owner successfully!");
-    } catch (error) {
-      console.error("Error sending SMS to owner:", error);
     }
   };
 

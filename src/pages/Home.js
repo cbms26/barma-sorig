@@ -135,7 +135,7 @@ const HomePage = () => {
                 </h3>
                 <p className="mb-4">{treatment.description}</p>
                 <a
-                  href="#"
+                  href="/"
                   className="text-red-500 font-medium inline-flex items-center"
                 >
                   Learn More <i className="fas fa-arrow-right ml-2"></i>

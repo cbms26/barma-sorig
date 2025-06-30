@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 
-import LandingPage from "./pages/Landing.js";
 import ServicesPage from "./pages/Services.js";
 import HomePage from "./pages/Home.js";
 import AboutPage from "./pages/About.js";
