@@ -34,6 +34,7 @@ const TWILIO_OWNER = defineSecret("TWILIO_OWNER");
 export const sendSms = onRequest(
     {
       secrets: [TWILIO_SID, TWILIO_TOKEN, TWILIO_PHONE, TWILIO_OWNER],
+      enforceAppCheck: true, // Enforce App Check
       // We are now handling CORS manually with the `cors` package
     },
     (req, res) => {
