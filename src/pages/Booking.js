@@ -18,6 +18,7 @@ function BookingPage() {
     phone: "",
     date: "",
     time: "",
+    attendees: "1",
   });
 
   const [servicesData, setServicesData] = useState([]);
@@ -108,6 +109,20 @@ function BookingPage() {
   // Function to send SMS to the client
   const sendSMSToClient = async (bookingData) => {
     try {
+      // First compose the client message
+      const clientMessage = [
+        `Hi ${bookingData.name},`,
+        `Your booking with Barma Sorig is confirmed for ${bookingData.date} at ${bookingData.time}.`,
+        `Service: ${bookingData.service}${
+          bookingData.subService ? ` - ${bookingData.subService}` : ""
+        }`,
+        `Number of People: ${bookingData.attendees}`,
+        "Location: Chubachu, Thimphu",
+        "If you need to reschedule, please contact us.",
+        "We look forward to seeing you!",
+      ].join("\n");
+
+      // First API call to notify owner and get owner's number
       const response = await fetch("https://sendsms-c44qbaeuaa-uc.a.run.app", {
         method: "POST",
         headers: {
@@ -115,28 +130,76 @@ function BookingPage() {
         },
         body: JSON.stringify({
           to: bookingData.phone,
-          message: `Hello ${bookingData.name}, your booking for ${bookingData.service} (${bookingData.subService}) on ${bookingData.date} at ${bookingData.time} has been confirmed.`,
-          // Send these fields for the owner SMS
           name: bookingData.name,
           service: bookingData.service,
           subService: bookingData.subService,
           date: bookingData.date,
           time: bookingData.time,
+          attendees: bookingData.attendees,
+          message: clientMessage, // Now clientMessage is defined
         }),
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error("Failed to send SMS");
+        throw new Error(
+          `SMS notification failed: ${data.error || "Unknown error"}`
+        );
       }
 
-      console.log("SMS sent to client and owner successfully!");
+      if (!data.ownerNumber) {
+        throw new Error("Owner contact number not received from server");
+      }
+
+      // Update client message with owner's contact
+      const finalClientMessage = clientMessage.replace(
+        "If you need to reschedule, please contact us.",
+        `If you need to reschedule, please contact us at ${data.ownerNumber}.`
+      );
+
+      // Send confirmation SMS to client
+      const clientResponse = await fetch(
+        "https://sendsms-c44qbaeuaa-uc.a.run.app",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            to: bookingData.phone,
+            message: finalClientMessage,
+          }),
+        }
+      );
+
+      const clientData = await clientResponse.json();
+
+      if (!clientResponse.ok) {
+        throw new Error(
+          `Client SMS failed: ${clientData.error || "Unknown error"}`
+        );
+      }
+
+      console.log("SMS notifications sent successfully");
+      return true;
     } catch (error) {
-      console.error("Error sending SMS:", error);
+      console.error("SMS notification error:", error.message);
+      throw error;
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Bhutan phone number validation (must start with 17 or 77 and be 8 digits)
+    const bhutanRegex = /^(17|77)\d{6}$/;
+    if (!bhutanRegex.test(formData.phone)) {
+      alert(
+        "Please enter a valid Bhutan mobile number (starting with 17 or 77, 8 digits)."
+      );
+      return;
+    }
 
     try {
       // Validate that the date and time are in the future
@@ -182,6 +245,7 @@ function BookingPage() {
         phone: "",
         date: "",
         time: "",
+        attendees: "1",
       });
     } catch (error) {
       console.error("Error submitting booking:", error);
@@ -382,6 +446,25 @@ function BookingPage() {
                 value={formData.time}
                 onChange={handleChange}
                 className="w-full border border-gray-300 rounded px-4 py-2"
+                required
+              />
+            </div>
+            <div className="form-group mb-4">
+              <label
+                htmlFor="attendees"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                Number of People
+              </label>
+              <input
+                type="number"
+                id="attendees"
+                name="attendees"
+                value={formData.attendees}
+                onChange={handleChange}
+                className="w-full border border-gray-300 rounded px-4 py-2"
+                min="1"
+                max="10"
                 required
               />
             </div>

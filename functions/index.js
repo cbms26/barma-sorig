@@ -47,12 +47,22 @@ export const sendSms = onRequest(
         }
 
         const {to, message, ownerMessage,
-          name, service, subService, date, time} = req.body;
+          name, service, subService, date, time, attendees} = req.body;
 
-        // Format recipient number (Bhutan number)
-        let clientNumber = to;
-        if (!clientNumber.startsWith("+")) {
+        // Format and validate recipient number (Bhutan number)
+        let clientNumber = to.trim();
+        // Check if number starts with just 17 or 77
+        const bhutanRegex = /^(17|77)\d{6}$/;
+        if (bhutanRegex.test(clientNumber)) {
+          // Add +975 prefix if not present
           clientNumber = `+975${clientNumber}`;
+        } else if (!(/^\+975(17|77)\d{6}$/).test(clientNumber)) {
+          console.log(`Rejected number: ${clientNumber}`);
+          res.status(400).json({
+            success: false,
+            error: "Please enter a valid Bhutan mobile number (starting with 17 or 77 followed by 6 digits)",
+          });
+          return;
         }
 
         const accountSid = TWILIO_SID.value();
@@ -81,13 +91,14 @@ export const sendSms = onRequest(
           });
 
           // Compose and send to owner
-          const ownerMsg =
-          ownerMessage ||
-          `New booking:
-Name: ${name || "N/A"}
-Service: ${service || "N/A"}${subService ? ` - ${subService}` : ""}
-Date: ${date || "N/A"}
-Time: ${time || "N/A"}`;
+          const ownerMsg = ownerMessage ||
+          `📅 New Booking Alert:
+          Client: ${name || "N/A"}
+          Date: ${date || "N/A"}
+          Time: ${time || "N/A"}
+          Service: ${service || "N/A"}${subService ? ` - ${subService}` : ""}
+          Number of People: ${attendees || "1"}
+          Contact: ${clientNumber || "N/A"}`;
 
           const ownerResponse = await client.messages.create({
             body: ownerMsg,
@@ -99,6 +110,7 @@ Time: ${time || "N/A"}`;
             success: true,
             clientSid: clientResponse.sid,
             ownerSid: ownerResponse.sid,
+            ownerNumber: ownerNumber,
             version: "v2", // Added version number to response
           });
         } catch (err) {

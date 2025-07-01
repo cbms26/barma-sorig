@@ -5,6 +5,10 @@
         "markdown": false,
         "scminput": false
     },
+    "github.copilot.chat.experimental.features": {
+  "documentExplorer": true
+},
+
     "github.copilot.advanced": {
         
     }
