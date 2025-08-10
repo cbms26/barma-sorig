@@ -147,7 +147,14 @@ function ContactPage() {
                   <strong>Phone:</strong> +(975) 17248226
                 </p>
                 <p className="mb-2">
-                  <strong>Email:</strong> barmasorig2018@gmail.com
+                  <strong>Email: </strong>
+                  <a
+                    href="mailto:barmasorig2018@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    barmasorig2018@gmail.com
+                  </a>
                 </p>
                 <p>
                   <strong>Hours:</strong> Mon - Sun, 9:00 AM - 8:00 PM

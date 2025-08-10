@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3Icon,
+  XMarkIcon,
+  ChevronRightIcon,
+  ChevronDoubleDownIcon,
+} from "@heroicons/react/24/outline";
 import LogoWithName from "../assets/images/logo-with-name.png";
 import navigation from "../data/mainMenus.js";
 
@@ -79,13 +84,17 @@ export default function Header() {
                               item.to !== "/aboutPage")
                             ? "bg-gray-900 text-white"
                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "rounded-md px-3 py-2 text-sm font-medium flex items-center"
+                          "rounded-md px-3 py-2 text-sm font-medium flex gap-1 items-center"
                         )}
                       >
                         {item.name}
+                        {item.hasDropdown && (
+                          <ChevronDoubleDownIcon className="h-4 w-4 transition-transform group-hover:rotate-180" />
+                        )}
                       </Link>
-                      {/* Dropdown Menus */}
+                      {/* Drop Down Menus */}
                       <div className="absolute left-0 top-full hidden w-96 origin-top-left rounded-md bg-white py-4 px-6 shadow-lg ring-1 ring-black/5 group-hover:block z-10">
+                        {/* Content Container */}
                         <div
                           className={
                             item.name === "About"
@@ -93,14 +102,16 @@ export default function Header() {
                               : "grid grid-cols-2 gap-4"
                           }
                         >
+                          {/* Menu Items */}
                           {item.name === "About"
                             ? item.dropdownItems.map((mainService) => (
                                 <Link
                                   key={mainService.name}
                                   to={mainService.to}
-                                  className="block px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:border-l-4 hover:border-blue-600 rounded transition-all duration-75"
+                                  className="block px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:border-l-4 hover:border-blue-600 rounded transition-all duration-75 flex items-center justify-between"
                                 >
-                                  {mainService.name}
+                                  <span>{mainService.name}</span>
+                                  <ChevronRightIcon className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                                 </Link>
                               ))
                             : item.dropdownItems.map((mainService) => (
@@ -108,6 +119,7 @@ export default function Header() {
                                   <h3 className="text-gray-700 font-semibold text-sm mb-2">
                                     {mainService.name}
                                   </h3>
+                                  {/* Check if this service has sub-items */}
                                   {mainService.subServices ? (
                                     <div className="space-y-1">
                                       {mainService.subServices.map(
@@ -115,9 +127,10 @@ export default function Header() {
                                           <Link
                                             key={subService.name}
                                             to={subService.to}
-                                            className="block px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:border-l-4 hover:border-blue-600 rounded transition-all duration-75"
+                                            className="block px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:border-l-4 hover:border-blue-600 rounded transition-all duration-75 flex items-center justify-between"
                                           >
-                                            {subService.name}
+                                            <span>{subService.name}</span>
+                                            <ChevronRightIcon className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                                           </Link>
                                         )
                                       )}

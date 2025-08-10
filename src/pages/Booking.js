@@ -277,7 +277,7 @@ function BookingPage() {
                 name="service"
                 value={formData.service}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded px-4 py-2"
+                className="w-full border border-gray-300 rounded px-4 py-2 cursor-pointer"
                 required
               >
                 <option value="">Select a service</option>
@@ -300,7 +300,7 @@ function BookingPage() {
                 name="subService"
                 value={formData.subService}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded px-4 py-2"
+                className="w-full border border-gray-300 rounded px-4 py-2 cursor-pointer"
                 required
                 disabled={!formData.service} // Disable if no service is selected
               >
@@ -328,7 +328,7 @@ function BookingPage() {
                 </div>
               </div>
             )}
-            {formData.service === "Traditional SPA Treatments" &&
+            {/* {formData.service === "Traditional SPA Treatments" &&
               formData.benefits && (
                 <div className="form-group mb-4">
                   <label
@@ -344,7 +344,7 @@ function BookingPage() {
                     {formData.benefits}
                   </div>
                 </div>
-              )}
+              )} */}
             {formData.duration && (
               <div className="form-group mb-4">
                 <label
@@ -428,7 +428,7 @@ function BookingPage() {
                 name="date"
                 value={formData.date}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded px-4 py-2"
+                className="w-full border border-gray-300 rounded px-4 py-2 cursor-pointer"
                 required
               />
             </div>

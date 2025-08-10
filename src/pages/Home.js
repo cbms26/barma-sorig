@@ -7,6 +7,7 @@ import Footer from "../components/Footer.js";
 import HeroBG from "../assets/images/hero-bg.webp";
 import BarmaSorigVideoAdvertisement from "../assets/videos/barma-sorig-ad.mp4";
 import videoThumbnail from "../assets/images/video-thumbnail.jpg";
+import BoyGirlBG from "../assets/images/boy-girl.png"; // Adjust path as needed
 
 const HomePage = () => {
   return (
@@ -15,29 +16,37 @@ const HomePage = () => {
 
       {/* Hero Section */}
       <section
-        className="hero min-h-screen flex items-center pt-20 bg-cover bg-center bg-fixed relative"
-        style={{ backgroundImage: `url(${HeroBG})` }}
+        className="hero hero-mobile min-h-[50vh] flex items-center pt-20 bg-cover sm:bg-contain bg-center bg-no-repeat bg-fixed relative"
+        style={{ backgroundImage: `url(${BoyGirlBG})` }}
       >
         {/* Overlay for translucency */}
-        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-10"></div>
 
         {/* Content */}
-        <div className="container mx-auto px-4 py-6 bg-gray-900 bg-opacity-60 text-center text-white relative z-10">
-          <h1 className="text-sky-500 text-4xl md:text-6xl font-bold mb-6 serif">
-            Barma Sorig Healing Center
+        <div className="container rounded-xl mx-auto px-4 py-12 bg-gray-900 bg-opacity-60 text-center text-white relative z-10 -mt-20">
+          <h1 className="text-sky-500 text-4xl md:text-6xl font-bold mb-4 serif">
+            Experience Ancient Healing Wisdom
           </h1>
-          <p className="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
-            &ldquo;Traditional <i>Ku-Nye</i> (massage) Treatment &amp; more, for
-            Health &amp; Well-being&ldquo;
+          <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-amber-400">
+            Barma Sorig Healing Center
+          </h2>
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
+            Discover the transformative power of traditional <i>Ku-Nye</i>{" "}
+            treatments, where ancient Himalayan wisdom meets modern wellness
           </p>
 
-          <div className="flex items-center justify-center gap-2 sm:gap-4">
-            <p className="text-xl font-medium">Treat Yourself —</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+            <Link
+              to="/bookingPage"
+              className="px-8 py-4 bg-amber-900 text-white font-medium rounded-full hover:bg-amber-800 transition-all transform hover:scale-105 text-xl flex items-center"
+            >
+              Book Your Session <i className="fas fa-arrow-right ml-2"></i>
+            </Link>
             <Link
               to="/servicesPage"
-              className="px-6 py-3 bg-amber-900 text-white font-medium rounded-full hover:bg-amber-800 transition text-2xl"
+              className="px-8 py-4 border-2 border-white text-white font-medium rounded-full hover:bg-white hover:text-amber-900 transition-all text-xl"
             >
-              Book Now
+              Explore Our Services
             </Link>
           </div>
         </div>
