@@ -1,13 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
-
-import HeroBG from "../assets/images/hero-bg.webp";
 import BarmaSorigVideoAdvertisement from "../assets/videos/barma-sorig-ads.mp4";
 import videoThumbnail from "../assets/images/barma-sorig-ads-thumbnail.png";
-import BoyGirlBG from "../assets/images/boy-girl.png"; // Adjust path as needed
+import BoyGirlBG from "../assets/images/boy-girl.png";
 
 const HomePage = () => {
   return (
