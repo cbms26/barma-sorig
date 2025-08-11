@@ -43,4 +43,5 @@ twilio-debug.log
 *.sw?
 
 # Assets
-.assets/*
+src/assets/images/
+src/assets/videos/
