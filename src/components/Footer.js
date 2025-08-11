@@ -58,6 +58,7 @@ export default function Footer() {
               href="https://www.facebook.com/barmasorighealingcenter"
               className="text-gray-400 hover:text-sky-500 transition text-xl"
               aria-label="Facebook"
+              target="__blank_"
             >
               <i className="fab fa-facebook"></i>
             </a>
@@ -65,6 +66,7 @@ export default function Footer() {
               href="/"
               className="text-gray-400 hover:text-sky-500 transition text-xl"
               aria-label="Instagram"
+              target="__blank_"
             >
               <i className="fab fa-instagram"></i>
             </a>
@@ -72,6 +74,7 @@ export default function Footer() {
               href="/"
               className="text-gray-400 hover:text-sky-500 transition text-xl"
               aria-label="YouTube"
+              target="__blank_"
             >
               <i className="fab fa-youtube"></i>
             </a>

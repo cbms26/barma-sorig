@@ -3,6 +3,7 @@ import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 
 import ceo from "../assets/images/CEO.jpeg";
+import adsThumbnail from "../assets/images/barma-sorig-ads-thumbnail.png";
 import generalSupervisor from "../assets/images/General Supervisor.jpeg";
 
 function AboutPage() {
@@ -29,12 +30,12 @@ function AboutPage() {
               <video
                 className="ads-video rounded-lg"
                 controls
-                controlsList="nodownload"
                 width="100%"
-                poster="https://barma-sorig-assets.s3.ap-southeast-2.amazonaws.com/barma-sorig-ads-thumbnail.png"
+                poster={adsThumbnail}
+                preload="metadata"
               >
                 <source
-                  src="https://barma-sorig-assets.s3.ap-southeast-2.amazonaws.com/barma-sorig-ads.mp4"
+                  src="../assets/videos/barma-sorig-ads.mp4"
                   type="video/mp4"
                 />
                 Your browser does not support the video.

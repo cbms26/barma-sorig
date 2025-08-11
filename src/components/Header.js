@@ -15,7 +15,8 @@ function classNames(...classes) {
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null); // Track which dropdown is open
+  const [openDropdown, setOpenDropdown] = useState(null); // Track which dropdown is open (mobile)
+  const [openDesktopDropdown, setOpenDesktopDropdown] = useState(null); // Track which dropdown is open (desktop)
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
@@ -70,83 +71,123 @@ export default function Header() {
                 isScrolled ? "text-lg" : "text-base"
               )}
             >
-              <div className="flex space-x-4">
+              <div className="flex space-x-6">
                 {navigation.map((item) =>
                   item.hasDropdown ? (
-                    <div key={item.name} className="relative group">
+                    <div key={item.name} className="relative">
                       {/* Dropdown Tab */}
-                      <Link
-                        to={item.to}
-                        className={classNames(
-                          location.pathname === item.to ||
+                      <div className="flex items-center">
+                        <Link
+                          to={item.to}
+                          className={classNames(
+                            location.pathname === item.to ||
+                              (item.hasDropdown &&
+                                location.pathname.startsWith(item.to) &&
+                                item.to !== "/aboutPage")
+                              ? "text-white"
+                              : "text-gray-300",
+                            "relative py-2 text-sm font-medium transition-colors duration-200 hover:text-white group"
+                          )}
+                        >
+                          {item.name}
+                          {/* Animated underline */}
+                          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-400 transition-all duration-300 group-hover:w-full"></span>
+                          {/* Active underline */}
+                          {(location.pathname === item.to ||
                             (item.hasDropdown &&
                               location.pathname.startsWith(item.to) &&
-                              item.to !== "/aboutPage")
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "rounded-md px-3 py-2 text-sm font-medium flex gap-1 items-center"
-                        )}
-                      >
-                        {item.name}
+                              item.to !== "/aboutPage")) && (
+                            <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white"></span>
+                          )}
+                        </Link>
+                        {/* Clickable Arrow Button */}
                         {item.hasDropdown && (
-                          <ChevronDoubleDownIcon className="h-4 w-4 transition-transform group-hover:rotate-180" />
+                          <button
+                            onClick={() =>
+                              setOpenDesktopDropdown(
+                                openDesktopDropdown === item.name
+                                  ? null
+                                  : item.name
+                              )
+                            }
+                            className="ml-1 p-1 text-gray-300 hover:text-white transition-colors duration-200"
+                          >
+                            <ChevronDoubleDownIcon
+                              className={classNames(
+                                "h-4 w-4 transition-transform duration-200",
+                                openDesktopDropdown === item.name
+                                  ? "rotate-180"
+                                  : ""
+                              )}
+                            />
+                          </button>
                         )}
-                      </Link>
-                      {/* Drop Down Menus */}
-                      <div className="absolute left-0 top-full hidden w-96 origin-top-left rounded-md bg-white py-4 px-6 shadow-lg ring-1 ring-black/5 group-hover:block z-10">
-                        {/* Content Container */}
-                        <div
-                          className={
-                            item.name === "About"
-                              ? "flex flex-col gap-2"
-                              : "grid grid-cols-2 gap-4"
-                          }
-                        >
-                          {/* Menu Items */}
-                          {item.name === "About"
-                            ? item.dropdownItems.map((mainService) => (
-                                <Link
-                                  key={mainService.name}
-                                  to={mainService.to}
-                                  className="block px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:border-l-4 hover:border-blue-600 rounded transition-all duration-75 flex items-center justify-between"
-                                >
-                                  <span>{mainService.name}</span>
-                                  <ChevronRightIcon className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                </Link>
-                              ))
-                            : item.dropdownItems.map((mainService) => (
-                                <div key={mainService.name}>
-                                  <h3 className="text-gray-700 font-semibold text-sm mb-2">
-                                    {mainService.name}
-                                  </h3>
-                                  {/* Check if this service has sub-items */}
-                                  {mainService.subServices ? (
-                                    <div className="space-y-1">
-                                      {mainService.subServices.map(
-                                        (subService) => (
-                                          <Link
-                                            key={subService.name}
-                                            to={subService.to}
-                                            className="block px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:border-l-4 hover:border-blue-600 rounded transition-all duration-75 flex items-center justify-between"
-                                          >
-                                            <span>{subService.name}</span>
-                                            <ChevronRightIcon className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                          </Link>
-                                        )
-                                      )}
-                                    </div>
-                                  ) : (
-                                    <Link
-                                      to={mainService.to}
-                                      className="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-700 hover:text-white rounded-md"
-                                    >
-                                      {mainService.name}
-                                    </Link>
-                                  )}
-                                </div>
-                              ))}
-                        </div>
                       </div>
+
+                      {/* Drop Down Menus - Show when clicked */}
+                      {openDesktopDropdown === item.name && (
+                        <div className="absolute left-0 top-full w-96 origin-top-left rounded-md bg-white py-4 px-6 shadow-lg ring-1 ring-black/5 z-10">
+                          {/* Content Container */}
+                          <div
+                            className={
+                              item.name === "About"
+                                ? "flex flex-col gap-2"
+                                : "grid grid-cols-2 gap-4"
+                            }
+                          >
+                            {/* Menu Items */}
+                            {item.name === "About"
+                              ? item.dropdownItems.map((mainService) => (
+                                  <Link
+                                    key={mainService.name}
+                                    to={mainService.to}
+                                    className="block px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:border-l-4 hover:border-blue-600 rounded transition-all duration-75 flex items-center justify-between"
+                                    onClick={() => setOpenDesktopDropdown(null)}
+                                  >
+                                    <span>{mainService.name}</span>
+                                    <ChevronRightIcon className="h-4 w-4 opacity-0 hover:opacity-100 transition-opacity" />
+                                  </Link>
+                                ))
+                              : item.dropdownItems.map((mainService) => (
+                                  <div key={mainService.name}>
+                                    <h3 className="text-gray-700 font-semibold text-sm mb-2">
+                                      {mainService.name}
+                                    </h3>
+                                    {/* Check if this service has sub-items */}
+                                    {mainService.subServices ? (
+                                      <div className="space-y-1">
+                                        {mainService.subServices.map(
+                                          (subService) => (
+                                            <Link
+                                              key={subService.name}
+                                              to={subService.to}
+                                              className="block px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:border-l-4 hover:border-blue-600 rounded transition-all duration-75 flex items-center justify-between"
+                                              onClick={() =>
+                                                setOpenDesktopDropdown(null)
+                                              }
+                                            >
+                                              <span>{subService.name}</span>
+                                              <ChevronRightIcon className="h-4 w-4 opacity-0 hover:opacity-100 transition-opacity" />
+                                            </Link>
+                                          )
+                                        )}
+                                      </div>
+                                    ) : (
+                                      <Link
+                                        to={mainService.to}
+                                        className="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-700 hover:text-white rounded-md"
+                                        onClick={() =>
+                                          setOpenDesktopDropdown(null)
+                                        }
+                                      >
+                                        {mainService.name}
+                                      </Link>
+                                    )}
+                                  </div>
+                                ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   ) : (
                     <Link
@@ -154,12 +195,18 @@ export default function Header() {
                       to={item.to}
                       className={classNames(
                         location.pathname === item.to
-                          ? "bg-gray-900 text-white"
-                          : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                        "rounded-md px-3 py-2 text-sm font-medium"
+                          ? "text-white"
+                          : "text-gray-300",
+                        "relative py-2 text-sm font-medium transition-colors duration-200 hover:text-white group"
                       )}
                     >
                       {item.name}
+                      {/* Animated underline */}
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-400 transition-all duration-300 group-hover:w-full"></span>
+                      {/* Active underline */}
+                      {location.pathname === item.to && (
+                        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white"></span>
+                      )}
                     </Link>
                   )
                 )}
@@ -170,7 +217,7 @@ export default function Header() {
           <div className="absolute inset-y-0 right-0 flex text-center items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <Link
               to="/bookingPage"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200"
             >
               Book Now
             </Link>
@@ -185,31 +232,50 @@ export default function Header() {
             {navigation.map((item) =>
               item.hasDropdown ? (
                 <div key={item.name}>
-                  <button
-                    onClick={() =>
-                      setOpenDropdown(
-                        openDropdown === item.name ? null : item.name
-                      )
-                    }
-                    className="w-full text-left text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium"
-                  >
-                    {item.name}
-                  </button>
+                  {/* Mobile menu item with arrow */}
+                  <div className="flex items-center w-fit">
+                    <Link
+                      to={item.to}
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium transition-colors duration-200"
+                      onClick={() => setIsMobileMenuOpen(false)} // Close mobile menu when navigating
+                    >
+                      {item.name}
+                    </Link>
+                    {/* Arrow button for mobile dropdown */}
+                    <button
+                      onClick={() =>
+                        setOpenDropdown(
+                          openDropdown === item.name ? null : item.name
+                        )
+                      }
+                      className="ml-1 p-1 text-gray-300 hover:text-white transition-colors duration-200"
+                    >
+                      <ChevronDoubleDownIcon
+                        className={classNames(
+                          "h-4 w-4 transition-transform duration-200",
+                          openDropdown === item.name ? "rotate-180" : ""
+                        )}
+                      />
+                    </button>
+                  </div>
+
+                  {/* Mobile dropdown content */}
                   {openDropdown === item.name && (
-                    <div className="pl-4">
+                    <div className="pl-4 mt-2">
                       {item.name === "About"
                         ? item.dropdownItems.map((mainService) => (
                             <Link
                               key={mainService.name}
                               to={mainService.to}
-                              className="block px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
+                              className="block px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200"
+                              onClick={() => setIsMobileMenuOpen(false)} // Close mobile menu when navigating
                             >
                               {mainService.name}
                             </Link>
                           ))
                         : item.dropdownItems.map((mainService) => (
                             <div key={mainService.name}>
-                              <h3 className="text-gray-400 font-semibold text-sm mb-2">
+                              <h3 className="text-gray-400 font-semibold text-sm mb-2 px-4">
                                 {mainService.name}
                               </h3>
                               <div className="space-y-1">
@@ -218,7 +284,8 @@ export default function Header() {
                                     <Link
                                       key={subService.name}
                                       to={subService.to}
-                                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
+                                      className="block px-6 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200"
+                                      onClick={() => setIsMobileMenuOpen(false)} // Close mobile menu when navigating
                                     >
                                       {subService.name}
                                     </Link>
@@ -233,7 +300,8 @@ export default function Header() {
                 <Link
                   key={item.name}
                   to={item.to}
-                  className="block text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium"
+                  className="block text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium transition-colors duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)} // Close mobile menu when navigating
                 >
                   {item.name}
                 </Link>

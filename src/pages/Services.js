@@ -132,14 +132,14 @@ function ServicesPage() {
             <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
               Explore Our Offerings
             </h2>
-            <div className="flex flex-wrap gap-8 justify-center items-center">
+            <div className="flex flex-wrap gap-8 justify-center items-center ">
               {servicesData.map((service, index) => (
                 <div
                   key={index}
-                  className="service-card bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl w-80"
+                  className="service-card bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl w-80 cursor-pointer"
                   onClick={() => openModal(index)}
                 >
-                  <div className="service-image h-48 bg-gray-200 cursor-pointer">
+                  <div className="service-image h-48 bg-gray-200">
                     <img
                       src={
                         service.title === "SPA Treatments"
