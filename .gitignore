@@ -41,3 +41,6 @@ twilio-debug.log
 *.njsproj
 *.sln
 *.sw?
+
+# Assets
+.assets/*
