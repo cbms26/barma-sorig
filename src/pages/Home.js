@@ -2,11 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
-import BarmaSorigVideoAdvertisement from "../assets/videos/barma-sorig-ads.mp4";
-import videoThumbnail from "../assets/images/barma-sorig-ads-thumbnail.png";
+// Remove these local imports
+// import BarmaSorigVideoAdvertisement from "../assets/videos/barma-sorig-ads.mp4";
+// import videoThumbnail from "../assets/images/barma-sorig-ads-thumbnail.png";
 import BoyGirlBG from "../assets/images/boy-girl.png";
 
 const HomePage = () => {
+  // AWS S3 URLs
+  const BarmaSorigVideoAdvertisement =
+    "https://barma-sorig-assets.s3.ap-southeast-2.amazonaws.com/barma-sorig-ads.mp4";
+  const videoThumbnail =
+    "https://barma-sorig-assets.s3.ap-southeast-2.amazonaws.com/barma-sorig-ads-thumbnail.png";
+
   return (
     <>
       <Header />
@@ -53,14 +60,15 @@ const HomePage = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center">
-            {/* Video Advertisement */}
+            {/* Video Advertisement - Using AWS S3 */}
             <div className="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
               <video
-                src={BarmaSorigVideoAdvertisement}
                 controls
                 poster={videoThumbnail}
                 className="rounded-lg shadow-xl w-full h-auto"
+                preload="metadata"
               >
+                <source src={BarmaSorigVideoAdvertisement} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>

@@ -3,10 +3,18 @@ import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 
 import ceo from "../assets/images/CEO.jpeg";
-import adsThumbnail from "../assets/images/barma-sorig-ads-thumbnail.png";
+// Remove these local imports
+// import BarmaSorigVideoAdvertisement from "../assets/videos/barma-sorig-ads.mp4";
+// import videoThumbnail from "../assets/images/barma-sorig-ads-thumbnail.png";
 import generalSupervisor from "../assets/images/General Supervisor.jpeg";
 
 function AboutPage() {
+  // AWS S3 URLs
+  const BarmaSorigVideoAdvertisement =
+    "https://barma-sorig-assets.s3.ap-southeast-2.amazonaws.com/barma-sorig-ads.mp4";
+  const videoThumbnail =
+    "https://barma-sorig-assets.s3.ap-southeast-2.amazonaws.com/barma-sorig-ads-thumbnail.png";
+
   return (
     <>
       <Header />
@@ -22,43 +30,42 @@ function AboutPage() {
           </div>
         </section>
 
-        {/* About Section */}
-        <section className="about-section py-20">
-          <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Left Section: Image */}
-            <div className="ads-content ">
-              <video
-                className="ads-video rounded-lg"
-                controls
-                width="100%"
-                poster={adsThumbnail}
-                preload="metadata"
-              >
-                <source
-                  src="../assets/videos/barma-sorig-ads.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video.
-              </video>
-            </div>
-            {/* Right Section: Content */}
-            <div className="about-content">
-              <h2 className="text-4xl font-bold text-gray-800 mb-6">
-                Who We Are
-              </h2>
-              <p className="text-gray-700 leading-relaxed text-lg">
-                Barma Sorig Healing Center, Bhutan, in collaboration with Pure
-                Vision Sorig Healing & Research Center, Nepal, offers a variety
-                of wellness treatments for guests of all ages. Our main
-                treatments include traditional therapeutic gentle external
-                therapy (Jyamtse Ku-Nye) and Five Nectar (Amritas) Steam.
-              </p>
-              <p className="text-gray-700 leading-relaxed text-lg mt-4">
-                Experience the benefits of ancient traditional practices that
-                promote relaxation, general health, and well-being. Our
-                therapists are highly trained and dedicated to providing the
-                best care for our guests.
-              </p>
+        {/* About Section - COPIED FROM HOME.JS */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col lg:flex-row items-center">
+              {/* Video Advertisement - Using AWS S3 */}
+              <div className="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
+                <video
+                  controls
+                  poster={videoThumbnail}
+                  className="rounded-lg shadow-xl w-full h-auto"
+                  preload="metadata"
+                >
+                  <source src={BarmaSorigVideoAdvertisement} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              {/* Content */}
+              <div className="lg:w-1/2">
+                <h2 className="text-4xl font-bold text-gray-800 mb-6">
+                  Who We Are
+                </h2>
+                <p className="text-gray-700 leading-relaxed text-lg">
+                  Barma Sorig Healing Center, Bhutan, in collaboration with Pure
+                  Vision Sorig Healing & Research Center, Nepal, offers a
+                  variety of wellness treatments for guests of all ages. Our
+                  main treatments include traditional therapeutic gentle
+                  external therapy (Jyamtse Ku-Nye) and Five Nectar (Amritas)
+                  Steam.
+                </p>
+                <p className="text-gray-700 leading-relaxed text-lg mt-4">
+                  Experience the benefits of ancient traditional practices that
+                  promote relaxation, general health, and well-being. Our
+                  therapists are highly trained and dedicated to providing the
+                  best care for our guests.
+                </p>
+              </div>
             </div>
           </div>
         </section>
