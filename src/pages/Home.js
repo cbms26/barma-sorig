@@ -29,10 +29,10 @@ const HomePage = () => {
         {/* Content */}
         <div className="container rounded-xl mx-auto px-4 py-12 bg-gray-900 bg-opacity-60 text-center text-white relative z-10 -mt-20">
           <h1 className="text-sky-500 text-4xl md:text-6xl font-bold mb-4 serif">
-            Experience Ancient Healing Wisdom
+            TRADITIONAL KU NYE MASSAGE
           </h1>
           <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-amber-400">
-            Barma Sorig Healing Center
+            SORIG SPA
           </h2>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
             Discover the transformative power of traditional <i>Ku-Nye</i>{" "}

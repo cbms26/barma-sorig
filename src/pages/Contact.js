@@ -9,6 +9,7 @@ function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    mobile: "",
     message: "",
   });
 
@@ -29,7 +30,7 @@ function ContactPage() {
       console.log("Feedback submitted:", formData);
 
       // Reset the form after submission
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", mobile: "", message: "" });
     } catch (error) {
       console.error("Error submitting feedback:", error);
       alert("There was an error submitting your feedback. Please try again.");
@@ -98,6 +99,24 @@ function ContactPage() {
                 </div>
                 <div className="mb-4">
                   <label
+                    htmlFor="mobile"
+                    className="block text-gray-700 font-medium mb-2"
+                  >
+                    Mobile Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="mobile"
+                    name="mobile"
+                    value={formData.mobile}
+                    onChange={handleChange}
+                    className="w-full border border-gray-300 rounded px-4 py-2"
+                    placeholder="Enter your mobile number"
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label
                     htmlFor="message"
                     className="block text-gray-700 font-medium mb-2"
                   >
@@ -144,20 +163,21 @@ function ContactPage() {
                   <strong>Address:</strong> Chubachu, Thimphu 11001, Bhutan
                 </p>
                 <p className="mb-2">
-                  <strong>Phone:</strong> +(975) 17248226
+                  <strong>Phone:</strong> 02-341361
                 </p>
                 <p className="mb-2">
                   <strong>Email: </strong>
                   <a
-                    href="mailto:barmasorig2018@gmail.com"
+                    href="mailto:barmasorig@gmail.com"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    barmasorig2018@gmail.com
+                    barmasorig@gmail.com
                   </a>
                 </p>
                 <p>
-                  <strong>Hours:</strong> Mon - Sun, 9:00 AM - 8:00 PM
+                  <strong>Hours:</strong> Open All Week, (Morning) 10AM - 8PM
+                  (Evening)
                 </p>
               </div>
             </div>
