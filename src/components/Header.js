@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   Bars3Icon,
@@ -19,6 +19,7 @@ export default function Header() {
   const [openDesktopDropdown, setOpenDesktopDropdown] = useState(null); // Track which dropdown is open (desktop)
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,6 +89,15 @@ export default function Header() {
                               : "text-gray-300",
                             "relative py-2 text-sm font-medium transition-colors duration-200 hover:text-white group"
                           )}
+                          // Toggle dropdown on menu name click
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setOpenDesktopDropdown(
+                              openDesktopDropdown === item.name
+                                ? null
+                                : item.name
+                            );
+                          }}
                         >
                           {item.name}
                           {/* Animated underline */}
@@ -99,29 +109,18 @@ export default function Header() {
                               item.to !== "/aboutPage")) && (
                             <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white"></span>
                           )}
-                        </Link>
-                        {/* Clickable Arrow Button */}
-                        {item.hasDropdown && (
-                          <button
-                            onClick={() =>
-                              setOpenDesktopDropdown(
-                                openDesktopDropdown === item.name
-                                  ? null
-                                  : item.name
-                              )
-                            }
-                            className="ml-1 p-1 text-gray-300 hover:text-white transition-colors duration-200"
-                          >
+                          {/* Arrow icon (visual only) */}
+                          {item.hasDropdown && (
                             <ChevronDoubleDownIcon
                               className={classNames(
-                                "h-4 w-4 transition-transform duration-200",
+                                "ml-1 h-4 w-4 transition-transform duration-200 inline",
                                 openDesktopDropdown === item.name
                                   ? "rotate-180"
                                   : ""
                               )}
                             />
-                          </button>
-                        )}
+                          )}
+                        </Link>
                       </div>
 
                       {/* Drop Down Menus - Show when clicked */}
@@ -130,13 +129,13 @@ export default function Header() {
                           {/* Content Container */}
                           <div
                             className={
-                              item.name === "About"
+                              item.name === "About Us"
                                 ? "flex flex-col gap-2"
                                 : "grid grid-cols-2 gap-4"
                             }
                           >
                             {/* Menu Items */}
-                            {item.name === "About"
+                            {item.name === "About Us"
                               ? item.dropdownItems.map((mainService) => (
                                   <Link
                                     key={mainService.name}
@@ -234,25 +233,18 @@ export default function Header() {
                 <div key={item.name}>
                   {/* Mobile menu item with arrow */}
                   <div className="flex items-center w-fit">
-                    <Link
-                      to={item.to}
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium transition-colors duration-200"
-                      onClick={() => setIsMobileMenuOpen(false)} // Close mobile menu when navigating
-                    >
-                      {item.name}
-                    </Link>
-                    {/* Arrow button for mobile dropdown */}
                     <button
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium transition-colors duration-200 flex items-center"
                       onClick={() =>
                         setOpenDropdown(
                           openDropdown === item.name ? null : item.name
                         )
                       }
-                      className="ml-1 p-1 text-gray-300 hover:text-white transition-colors duration-200"
                     >
+                      {item.name}
                       <ChevronDoubleDownIcon
                         className={classNames(
-                          "h-4 w-4 transition-transform duration-200",
+                          "ml-1 h-4 w-4 transition-transform duration-200",
                           openDropdown === item.name ? "rotate-180" : ""
                         )}
                       />
@@ -262,13 +254,13 @@ export default function Header() {
                   {/* Mobile dropdown content */}
                   {openDropdown === item.name && (
                     <div className="pl-4 mt-2">
-                      {item.name === "About"
+                      {item.name === "About Us"
                         ? item.dropdownItems.map((mainService) => (
                             <Link
                               key={mainService.name}
                               to={mainService.to}
                               className="block px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200"
-                              onClick={() => setIsMobileMenuOpen(false)} // Close mobile menu when navigating
+                              onClick={() => setIsMobileMenuOpen(false)}
                             >
                               {mainService.name}
                             </Link>
@@ -285,7 +277,7 @@ export default function Header() {
                                       key={subService.name}
                                       to={subService.to}
                                       className="block px-6 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200"
-                                      onClick={() => setIsMobileMenuOpen(false)} // Close mobile menu when navigating
+                                      onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                       {subService.name}
                                     </Link>
@@ -301,7 +293,7 @@ export default function Header() {
                   key={item.name}
                   to={item.to}
                   className="block text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium transition-colors duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)} // Close mobile menu when navigating
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
                 </Link>

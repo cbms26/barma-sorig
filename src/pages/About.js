@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 
-import ceo from "../assets/images/CEO.jpeg";
+import generalManger from "../assets/images/GeneralManager.jpeg";
+import founder from "../assets/images/CEO-Drungtsho Sherab Tenzin.jpg";
 // Remove these local imports
 // import BarmaSorigVideoAdvertisement from "../assets/videos/barma-sorig-ads.mp4";
 // import videoThumbnail from "../assets/images/barma-sorig-ads-thumbnail.png";
 import generalSupervisor from "../assets/images/General Supervisor.jpeg";
+import { useLocation } from "react-router-dom";
 
 function AboutPage() {
   // AWS S3 URLs
@@ -14,6 +16,18 @@ function AboutPage() {
     "https://barma-sorig-assets.s3.ap-southeast-2.amazonaws.com/barma-sorig-ads.mp4";
   const videoThumbnail =
     "https://barma-sorig-assets.s3.ap-southeast-2.amazonaws.com/barma-sorig-ads-thumbnail.png";
+
+  const location = useLocation();
+
+  useEffect(() => {
+    // Scrolling Behaviour when clicked on submenu containing id
+    if (location.hash) {
+      const el = document.getElementById(location.hash.replace("#", ""));
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
 
   return (
     <>
@@ -71,7 +85,10 @@ function AboutPage() {
         </section>
 
         {/* Mission & Vision Section */}
-        <section className="mission-section bg-gradient-to-r from-blue-100 to-blue-200 py-16">
+        <section
+          id="mission-vision"
+          className="mission-section bg-gradient-to-r from-blue-100 to-blue-200 py-16"
+        >
           <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 text-center relative">
             {/* Left Section: Mission content */}
             <div className="mission-content">
@@ -102,15 +119,35 @@ function AboutPage() {
         </section>
 
         {/* Team Section */}
-        <section className="team-section bg-blue-50 py-20">
+        <section id="staff" className="team-section bg-blue-50 py-20">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-center text-blue-600 mb-12">
               Meet Our Team
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-12">
-              {/* Team Member */}
+            <div className="grid grid-cols-1 gap-12 mb-12">
+              {/* Founder/CEO */}
+              <div className="flex justify-center">
+                <div className="team-member text-center bg-white shadow-lg rounded-lg p-8 w-full max-w-sm">
+                  <img
+                    src={founder}
+                    alt="Dr. Sherab Tenzin"
+                    className="rounded-full mx-auto mb-6 w-32 h-32 object-cover border-4 border-blue-600"
+                  />
+                  <h3 className="text-2xl font-semibold text-gray-800">
+                    Dr. Sherab Tenzin
+                  </h3>
+                  <p className="text-gray-600">Founder/CEO</p>
+                </div>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
+              {/* Other team members */}
               {[
-                { name: "Sangay Dorji", role: "CEO / Proprietor", img: ceo },
+                {
+                  name: "Sangay Dorji",
+                  role: "General Manager",
+                  img: generalManger,
+                },
                 {
                   name: "Dechen Pelden",
                   role: "General Supervisor / Senior Ku Nye Therapist",

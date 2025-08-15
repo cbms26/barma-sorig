@@ -1,6 +1,29 @@
 const navigation = [
   { name: "Home", to: "/" },
   {
+    name: "About Us",
+    to: "/aboutPage",
+    hasDropdown: true,
+    dropdownItems: [
+      {
+        name: "Ku Nye",
+        to: "/kuNyeBlog",
+      },
+      {
+        name: "Mission & Vision",
+        to: "/aboutPage#mission-vision",
+      },
+      {
+        name: "Staff Organogram",
+        to: "/aboutPage#staff",
+      },
+      {
+        name: "Our Merits Certificate",
+        to: "/",
+      },
+    ],
+  },
+  {
     name: "Services",
     to: "/servicesPage",
     hasDropdown: true,
@@ -46,27 +69,12 @@ const navigation = [
     ],
   },
   {
-    name: "About",
-    to: "/aboutPage",
-    hasDropdown: true,
-    dropdownItems: [
-      {
-        name: "Ku Nye",
-        to: "/kuNyeBlog",
-      },
-      {
-        name: "Nine Breathing Exercise",
-        to: "/nineBreathingExerciseBlog",
-      },
-      {
-        name: "Course",
-        to: "/",
-      },
-      {
-        name: "Staff Organogram",
-        to: "/",
-      },
-    ],
+    name: "Gallery",
+    to: "/galleryPage",
+  },
+  {
+    name: "Download",
+    to: "/",
   },
   { name: "Contact", to: "/contactPage" },
 ];
